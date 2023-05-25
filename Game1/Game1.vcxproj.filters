@@ -10,6 +10,7 @@
       <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Cannon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene2.cpp">
@@ -20,6 +21,7 @@
     </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Cannon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actors">
