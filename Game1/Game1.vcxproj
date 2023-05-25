@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="MainUI.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene2.h" />
     <ClInclude Include="Solar.h" />
@@ -29,6 +30,7 @@
   <ItemGroup>
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainUI.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene2.cpp" />
     <ClCompile Include="Solar.cpp" />
