@@ -1,0 +1,22 @@
+<Root Name="Bar" Visible="true" ObType="4">
+    <Mesh File="1.Rect.mesh"/>
+    <Shader File="1.UI.hlsl"/>
+    <Transform>
+        <Position X="-0.89999998" Y="0.89999998" Z="0"/>
+        <Scale X="1" Y="0.44999999" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Transform>
+    <UI PivotX="0.5" PivotY="-0.5"/>
+    <Children Size="1"/>
+    <Child0 Name="12" Visible="true" ObType="4">
+        <Mesh File="1.Rect.mesh"/>
+        <Shader File="1.UI.hlsl"/>
+        <Transform>
+            <Position X="0" Y="-2.7777779" Z="0"/>
+            <Scale X="1" Y="1" Z="1"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <UI PivotX="0" PivotY="0"/>
+        <Children Size="0"/>
+    </Child0>
+</Root>
