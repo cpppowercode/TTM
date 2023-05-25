@@ -12,6 +12,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="MainUI.h" />
+    <ClInclude Include="Airplane.h" />
+    <ClInclude Include="ObjectPool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene2.cpp">
@@ -24,6 +26,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="MainUI.cpp" />
+    <ClCompile Include="Airplane.cpp" />
+    <ClCompile Include="ObjectPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actors">
