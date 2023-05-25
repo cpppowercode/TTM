@@ -27,18 +27,17 @@ void Scene2::Init()
     Cam->viewport.width = App.GetWidth();
     Cam->viewport.height = App.GetHeight();
 
-
     grid =  Grid::Create();
   
     player = Actor::Create();
     player->LoadFile("Human.xml");
     spear = Actor::Create();
     spear->LoadFile("Spear.xml");
+    
     isFire = false;
    player->Find("SpearSoket")->rotation.x = -PI * 0.25f;
 
-   ui = UI::Create();
-   ui->LoadFile("UI.xml");
+
 
 }
 
@@ -63,7 +62,6 @@ void Scene2::Update()
     player->RenderHierarchy();
     spear->RenderHierarchy();
     Cam->RenderHierarchy();
-    ui->RenderHierarchy();
     ImGui::End();
 
     if (isFire)
@@ -122,7 +120,6 @@ void Scene2::Update()
     grid->Update();
     player->Update();
     spear->Update();
-    ui->Update();
 
 
 
@@ -149,7 +146,6 @@ void Scene2::Render()
     grid->Render();
     player->Render();
     spear->Render();
-    ui->Render();
 }
 
 void Scene2::PreRender()

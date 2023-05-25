@@ -1,0 +1,38 @@
+<Root Name="Actor" Visible="true" ObType="1">
+    <Transform>
+        <Position X="0" Y="0.85000002" Z="0"/>
+        <Scale X="1" Y="0.80000001" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Transform>
+    <Children Size="3"/>
+    <Child0 Name="GunBarrel" Visible="true" ObType="0">
+        <Mesh File="1.Cube.mesh"/>
+        <Shader File="1.Cube.hlsl"/>
+        <Transform>
+            <Position X="0" Y="0" Z="3"/>
+            <Scale X="1" Y="1" Z="3"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <Children Size="0"/>
+    </Child0>
+    <Child1 Name="wheel1" Visible="true" ObType="0">
+        <Mesh File="1.Circle.mesh"/>
+        <Shader File="1.Cube.hlsl"/>
+        <Transform>
+            <Position X="1" Y="0" Z="0"/>
+            <Scale X="2" Y="2" Z="2"/>
+            <Rotation X="0" Y="1.5707964" Z="0"/>
+        </Transform>
+        <Children Size="0"/>
+    </Child1>
+    <Child2 Name="wheel2" Visible="true" ObType="0">
+        <Mesh File="1.Circle.mesh"/>
+        <Shader File="1.Cube.hlsl"/>
+        <Transform>
+            <Position X="-1" Y="0" Z="0"/>
+            <Scale X="2" Y="2" Z="2"/>
+            <Rotation X="0" Y="1.5707964" Z="0"/>
+        </Transform>
+        <Children Size="0"/>
+    </Child2>
+</Root>

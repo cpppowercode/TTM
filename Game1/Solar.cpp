@@ -40,7 +40,7 @@ void Solar::Update()
 
 	if (GameObject* p = Find("MercuryBorn"))
 	{
-		p->rotation.y += DELTA * 3.14;
+		p->
 	}
 	Find("VenusBorn")->rotation.y += DELTA * 3.14;*/
 
