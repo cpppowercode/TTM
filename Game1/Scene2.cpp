@@ -9,7 +9,6 @@ Scene2::Scene2()
 
 
 
-    //RESOURCE->ReleaseAll();
 }
 
 Scene2::~Scene2()
