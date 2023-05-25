@@ -1,5 +1,5 @@
 <Root Name="Bar" Visible="true" ObType="4">
-    <Mesh File="1.Rect.mesh"/>
+    <Mesh File="1.SphereCollider.mesh"/>
     <Shader File="1.UI.hlsl"/>
     <Transform>
         <Position X="-0.89999998" Y="0.89999998" Z="0"/>
