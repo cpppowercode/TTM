@@ -1,8 +1,4 @@
 #pragma once
-class MainUI
-{
-};
-
 class MainUI : public Actor
 {
 public:
