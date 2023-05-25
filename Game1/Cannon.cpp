@@ -19,6 +19,7 @@ Cannon::~Cannon()
 
 void Cannon::Update()
 {
+	//대포 각도 조정
 	if (INPUT->KeyPress(VK_UP))
 	{
 		if (Find("GunBarrel"))

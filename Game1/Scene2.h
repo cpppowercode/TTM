@@ -8,6 +8,7 @@ private:
 	Grid*	grid;
 	Actor*  player;
 	Actor*  spear;
+	
 	bool	isFire;
 	float   gravity;
 
