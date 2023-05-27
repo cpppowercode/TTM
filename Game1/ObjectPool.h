@@ -7,6 +7,8 @@ public:
 
     Airplane* airPlane;
     Airplane* GetAirplane();
+    static vector<Airplane*> AirplaneCreate(string name = "Airplane");
+
 
     void	Release() override;
 private:

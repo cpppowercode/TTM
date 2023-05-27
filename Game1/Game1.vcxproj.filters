@@ -6,9 +6,6 @@
     <ClInclude Include="Scene2.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Solar.h">
-      <Filter>Actors</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="MainUI.h" />
     <ClInclude Include="Airplane.h" />
@@ -21,17 +18,14 @@
     <ClCompile Include="Scene2.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Solar.cpp">
-      <Filter>Actors</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="MainUI.cpp" />
-    <ClCompile Include="Airplane.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Cannon.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
+    <ClCompile Include="Airplane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actors">

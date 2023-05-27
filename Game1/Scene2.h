@@ -6,12 +6,7 @@ class Scene2 : public Scene
 private:
 	Camera* Cam;
 	Grid*	grid;
-	Actor*  player;
-	Actor*  spear;
-	
-	bool	isFire;
-	float   gravity;
-
+	// vector<Airplane*> objects;
 public:
 	Scene2();
 	~Scene2();
@@ -22,8 +17,6 @@ public:
 	virtual void Render() override;
 	virtual void PreRender() override;
 	virtual void ResizeScreen() override;
-
-	void Animation(GameObject* root);
 
 
 };

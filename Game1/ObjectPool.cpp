@@ -4,13 +4,21 @@
 
 #define INITIAL_POOL_SIZE 20
 
-ObjectPool::ObjectPool()
+vector<Airplane*> ObjectPool::AirplaneCreate(string name)
 {
+    Airplane* airPlane;
+    vector<Airplane*> airplanePool;
     for (int i = 0; i < INITIAL_POOL_SIZE; i++)
     {
         airPlane = Airplane::Create();
         airplanePool.push_back(airPlane);
     }
+
+    return airplanePool;
+}
+
+ObjectPool::ObjectPool()
+{
 }
 
 ObjectPool::~ObjectPool()

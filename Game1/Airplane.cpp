@@ -5,7 +5,7 @@ Airplane* Airplane::Create(string name)
 {
 	Airplane* airPlane = new Airplane();
 
-
+	airPlane->isInUse = true;
 	return airPlane;
 }
 
