@@ -1,12 +1,13 @@
 #pragma once
-
+#include "Airplane.h"
+#include "ObjectPool.h"
 
 class Scene2 : public Scene
 {
 private:
 	Camera* Cam;
 	Grid*	grid;
-	// vector<Airplane*> objects;
+	vector<Airplane*> objects;
 public:
 	Scene2();
 	~Scene2();

@@ -1,6 +1,4 @@
 #include "stdafx.h"
-#include "Airplane.h"
-#include "ObjectPool.h"
 #include "Scene2.h"
 
 Scene2::Scene2()
@@ -24,12 +22,12 @@ void Scene2::Init()
     Cam->viewport.width = App.GetWidth();
     Cam->viewport.height = App.GetHeight();
     
-    // objects = ObjectPool::AirplaneCreate();
+    objects = ObjectPool::AirplaneCreate();
+
+    for (Airplane* airplane : objects)
+        airplane->LoadFile("Airplane.xml");
 
     grid =  Grid::Create();
-    
-
-
 
 }
 
@@ -52,8 +50,11 @@ void Scene2::Update()
     ImGui::Begin("Hierarchy");
     grid->RenderHierarchy();
     Cam->RenderHierarchy();
-    ImGui::End();
     
+    for (Airplane* airplane: objects)
+        airplane->RenderHierarchy();
+
+    ImGui::End();
     
 
     
@@ -61,14 +62,8 @@ void Scene2::Update()
     Cam->Update();
     grid->Update();
 
-
-
-    /*Cam->GetWorldPos().x;
-    Cam->GetWorldPos().z;
-
-    Cam->scale.x;
-    Cam->rotation.x;*/
-
+    for (Airplane* airplane : objects)
+        airplane->Update();
 
 }
 
@@ -84,6 +79,8 @@ void Scene2::Render()
 
 
     grid->Render();
+    for (Airplane* airplane : objects)
+        airplane->Render();
 }
 
 void Scene2::PreRender()
