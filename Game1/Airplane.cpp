@@ -1,11 +1,19 @@
 #include "stdafx.h"
 #include "Airplane.h"
+#include "Player.h"
 
 Airplane* Airplane::Create(string name)
 {
 	Airplane* airPlane = new Airplane();
 
 	airPlane->isInUse = true;
+
+	airPlane->player = Player::Create();
+
+
+
+
+
 	return airPlane;
 }
 
@@ -19,6 +27,15 @@ Airplane::~Airplane()
 
 void Airplane::Update()
 {
+
+
+
+
+
+
+
+
+
 	Actor::Update();
 }
 
