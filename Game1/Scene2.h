@@ -21,6 +21,10 @@ private:
 	UI* bullet3;
 	UI* bullet4;
 	UI* bullet5;
+	UI* stop;
+	UI* option;
+	UI* continueUI;
+	UI* retry;
 
 	vector<Airplane*> airplanes;
 public:

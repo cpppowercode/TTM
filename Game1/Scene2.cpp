@@ -59,7 +59,20 @@ void Scene2::Init()
 
     bullet5 = UI::Create();
     bullet5->LoadFile("BulletUI5.xml");
-    ////////////////////////////////////
+
+    //Option UI
+    stop = UI::Create();
+    stop->LoadFile("StopUI.xml");
+
+    option = UI::Create();
+    option->LoadFile("OptionUI.xml");
+ 
+    continueUI = UI::Create();
+    continueUI->LoadFile("ContinueUI.xml");
+
+    retry = UI::Create();
+    retry->LoadFile("RetryUI.xml");
+    /////////////////////////////////
 
 
     airplanes = ObjectPool::AirplaneCreate();
@@ -108,7 +121,11 @@ void Scene2::Update()
     bullet3->RenderHierarchy();
     bullet4->RenderHierarchy();
     bullet5->RenderHierarchy();
-    //
+    stop->RenderHierarchy();
+    option->RenderHierarchy();
+    continueUI->RenderHierarchy();
+    retry->RenderHierarchy();
+    //////////////////////////
     grid->RenderHierarchy();
     Cam->RenderHierarchy();
     player->RenderHierarchy();
@@ -166,6 +183,7 @@ void Scene2::Update()
 
         if (bomb->Find("bombON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            App.deltaScale = 1.0f;
             bomb->Find("bombON")->visible = false;
         }
 
@@ -187,6 +205,7 @@ void Scene2::Update()
 
         if (reload->Find("reloadON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            App.deltaScale = 0.0f;
             reload->Find("reloadON")->visible = false;
         }
     }
@@ -198,8 +217,62 @@ void Scene2::Update()
         {
             reload->Find("reloadOFF")->visible = true;
         }
+    }   
+    //UI 일시정지버튼
+    if (stop->MouseOver())
+    {
+        stop->Find("stop")->scale.x = RANDOM->Float(1.15f, 1.2f);
+        stop->Find("stop")->scale.y = RANDOM->Float(1.15f, 1.2f);
+
+        if (option->Find("option")->visible == false && INPUT->KeyDown(VK_LBUTTON))
+        {
+            App.deltaScale = 0.0f;
+            option->Find("option")->visible = true;
+            continueUI->Find("continue")->visible = true;
+            retry->Find("retry")->visible = true;
+        }
     }
-    
+    else
+    {
+        stop->Find("stop")->scale.x = 1.15f;
+        stop->Find("stop")->scale.y = 1.15f;
+    }
+    //UI 이어하기버튼
+    if (continueUI->MouseOver())
+    {
+        continueUI->Find("continue")->scale.x = RANDOM->Float(1.0f, 1.05f);
+        continueUI->Find("continue")->scale.y = RANDOM->Float(1.0f, 1.05f);
+
+        if (option->Find("option")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        {
+            App.deltaScale = 1.0f;
+            option->Find("option")->visible = false;
+            continueUI->Find("continue")->visible = false;
+            retry->Find("retry")->visible = false;
+        }
+    }
+    else
+    {
+        continueUI->Find("continue")->scale.x = 1.0f;
+        continueUI->Find("continue")->scale.y = 1.0f;
+    }
+    //UI 다시하기버튼
+    if (retry->MouseOver())
+    {
+        retry->Find("retry")->scale.x = RANDOM->Float(1.0f, 1.05f);
+        retry->Find("retry")->scale.y = RANDOM->Float(1.0f, 1.05f);
+
+        /*if (retry->Find("retry")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        {
+            
+        }*/
+    }
+    else
+    {
+        retry->Find("retry")->scale.x = 1.0f;
+        retry->Find("retry")->scale.y = 1.0f;
+    }
+
     Cam->Update();
     grid->Update();
 
@@ -215,9 +288,18 @@ void Scene2::Update()
     bullet3->Update();
     bullet4->Update();
     bullet5->Update();
+<<<<<<< Updated upstream
     player->Update();
 
     for (Airplane* airplane : airplanes)
+=======
+    stop->Update();
+    option->Update();
+    continueUI->Update();
+    retry->Update();
+    /////////////////////
+    for (Airplane* airplane : objects)
+>>>>>>> Stashed changes
         airplane->Update();
 
 }
@@ -247,8 +329,14 @@ void Scene2::Render()
     bullet3->Render();
     bullet4->Render();
     bullet5->Render();
+    stop->Render();
+    option->Render();
+    continueUI->Render();
+    retry->Render();
     open->Render();
     botton->Render();
+    
+    //////////////////
 }
 
 void Scene2::PreRender()
