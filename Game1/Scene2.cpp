@@ -22,6 +22,9 @@ void Scene2::Init()
     Cam->viewport.width = App.GetWidth();
     Cam->viewport.height = App.GetHeight();
     
+    player = Player::Create();
+    player->LoadFile("Player.xml");
+
     ///UI 시작화면
     open = UI::Create();
     open->LoadFile("OpenUI.xml");
@@ -62,7 +65,10 @@ void Scene2::Init()
     objects = ObjectPool::AirplaneCreate();
 
     for (Airplane* airplane : objects)
+    {
         airplane->LoadFile("Airplane.xml");
+        airplane->player = player;
+    }
 
     grid =  Grid::Create();
 
@@ -105,6 +111,7 @@ void Scene2::Update()
     //
     grid->RenderHierarchy();
     Cam->RenderHierarchy();
+    player->RenderHierarchy();
     
     for (Airplane* airplane: objects)
         airplane->RenderHierarchy();
@@ -208,7 +215,7 @@ void Scene2::Update()
     bullet3->Update();
     bullet4->Update();
     bullet5->Update();
-
+    player->Update();
 
     for (Airplane* airplane : objects)
         airplane->Update();
@@ -225,6 +232,7 @@ void Scene2::Render()
     Camera::main->Set();
 
     grid->Render();
+    player->Render();
     
     for (Airplane* airplane : objects)
         airplane->Render();

@@ -10,7 +10,7 @@ Airplane* Airplane::Create(string name)
 
 	airPlane->player = Player::Create();
 
-
+	airPlane->player->GetLocalPos();
 
 
 

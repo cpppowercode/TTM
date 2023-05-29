@@ -1,12 +1,14 @@
 #pragma once
 #include "Airplane.h"
 #include "ObjectPool.h"
+#include "Player.h"
 
 class Scene2 : public Scene
 {
 private:
 	Camera* Cam;
 	Grid*	grid;
+	Player* player;
 
 	UI* open;
 	UI* botton;
