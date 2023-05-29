@@ -11,12 +11,9 @@ Airplane* Airplane::Create(string name)
 	airPlane->name = name;
 	Vector3 tempPos = airPlane->player->GetWorldPos() + Vector3((RANDOM->Float(0.0f, 10.0f),RANDOM->Float(0.0f, 10.0f), RANDOM->Float(0.0f, 10.0f)));
 
-<<<<<<< HEAD
 	airPlane->SetWorldPos(tempPos);
-=======
-	airPlane->player->GetLocalPos();
 
->>>>>>> parent of 721e4d7 (Update)
+	airPlane->player->GetLocalPos();
 
 	cout << airPlane->player->GetWorldPos().x << endl;
 

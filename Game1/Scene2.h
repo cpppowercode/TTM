@@ -26,7 +26,7 @@ private:
 	UI* continueUI;
 	UI* retry;
 
-	vector<Airplane*> objects;
+	vector<Airplane*> airplanes;
 public:
 	Scene2();
 	~Scene2();
