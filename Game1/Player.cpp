@@ -22,7 +22,7 @@ void Player::Release()
 void Player::MovePlayer(float scalar, float seta)
 {
 	// ZY 평면에서의 벡터값에 중력 뺀 방향으로 이동시키는 함수인데 의미가 있나...?
-	Find("root")->MoveWorldPos(((Vector3(0.0f, sin(seta), cos(seta)) * scalar) - (UP * gravity)) * DELTA);
+	Find("root")->MoveWorldPos(((Vector3(0.0f, sin(seta), cos(seta)) * scalar * DELTA) + (-UP * gravity) * DELTA) + (ObbColPos * DELTA));
 }
 
 void Player::PlayerAnimationPosSetting(Actor* Animation, int size)
