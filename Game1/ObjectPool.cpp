@@ -10,7 +10,9 @@ vector<Airplane*> ObjectPool::AirplaneCreate(string name)
     vector<Airplane*> airplanePool;
     for (int i = 0; i < INITIAL_POOL_SIZE; i++)
     {
-        airPlane = Airplane::Create();
+        string name = "airplane";
+        name += to_string(i);
+        airPlane = Airplane::Create(name);
         airplanePool.push_back(airPlane);
     }
 

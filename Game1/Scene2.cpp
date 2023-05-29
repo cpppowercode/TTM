@@ -24,6 +24,7 @@ void Scene2::Init()
     
     player = Player::Create();
     player->LoadFile("Player.xml");
+    player->Update();
 
     ///UI 시작화면
     open = UI::Create();
@@ -79,7 +80,7 @@ void Scene2::Init()
 
     for (Airplane* airplane : airplanes)
     {
-        airplane->LoadFile("Airplane.xml");
+        //airplane->LoadFile("Airplane.xml");
         airplane->player = player;
     }
 
