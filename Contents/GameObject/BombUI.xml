@@ -8,7 +8,7 @@
     </Transform>
     <UI PivotX="0.5" PivotY="-0.5"/>
     <Children Size="2"/>
-    <Child0 Name="boosterOFF" Visible="false" ObType="4">
+    <Child0 Name="bombOFF" Visible="false" ObType="4">
         <Mesh File="6.UI.mesh"/>
         <Shader File="6.UI.hlsl"/>
         <Texture File="bombOFF.png"/>
@@ -20,7 +20,7 @@
         <UI PivotX="0" PivotY="0"/>
         <Children Size="0"/>
     </Child0>
-    <Child1 Name="boosterON" Visible="true" ObType="4">
+    <Child1 Name="bombON" Visible="true" ObType="4">
         <Mesh File="6.UI.mesh"/>
         <Shader File="6.UI.hlsl"/>
         <Texture File="bombON.png"/>

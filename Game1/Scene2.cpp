@@ -117,7 +117,7 @@ void Scene2::Update()
         botton->Find("playbotton")->scale.x = RANDOM->Float(1.1f, 1.15f);
         botton->Find("playbotton")->scale.y = RANDOM->Float(1.0f, 1.05f);
 
-        if (INPUT->KeyDown(VK_LBUTTON))
+        if (open->Find("TTM")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
             open->Find("TTM")->visible = false;
             botton->Find("playbotton")->visible = false;
@@ -135,7 +135,7 @@ void Scene2::Update()
         booster->Find("boosterON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
 
-        if (INPUT->KeyDown(VK_LBUTTON))
+        if (booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
             booster->Find("boosterON")->visible = false;
         }
@@ -153,23 +153,23 @@ void Scene2::Update()
     //UI 2번버튼 폭탄
     if (bomb->MouseOver())
     {
-        bomb->Find("boosterON")->scale.x = RANDOM->Float(2.0f, 2.2f);
-        bomb->Find("boosterON")->scale.y = RANDOM->Float(2.6f, 2.8f);
+        bomb->Find("bombON")->scale.x = RANDOM->Float(2.0f, 2.2f);
+        bomb->Find("bombON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
 
-        if (INPUT->KeyDown(VK_LBUTTON))
+        if (bomb->Find("bombON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            bomb->Find("boosterON")->visible = false;
+            bomb->Find("bombON")->visible = false;
         }
 
     }
     else
     {
-        bomb->Find("boosterON")->scale.x = 2.0f;
-        bomb->Find("boosterON")->scale.y = 2.6f;
-        if (bomb->Find("boosterON")->visible == false)
+        bomb->Find("bombON")->scale.x = 2.0f;
+        bomb->Find("bombON")->scale.y = 2.6f;
+        if (bomb->Find("bombON")->visible == false)
         {
-            bomb->Find("boosterOFF")->visible = true;
+            bomb->Find("bombOFF")->visible = true;
         }
     }
     //UI 3번버튼 재장전
@@ -178,7 +178,7 @@ void Scene2::Update()
         reload->Find("reloadON")->scale.x = RANDOM->Float(2.0f, 2.2f);
         reload->Find("reloadON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
-        if (INPUT->KeyDown(VK_LBUTTON))
+        if (reload->Find("reloadON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
             reload->Find("reloadON")->visible = false;
         }
