@@ -73,6 +73,9 @@ void Scene2::Init()
 
     retry = UI::Create();
     retry->LoadFile("RetryUI.xml");
+    //Cannon 持失
+    cannon = Cannon::Create();
+    cannon->LoadFile("cannon.xml");
     /////////////////////////////////
 
 
@@ -130,6 +133,8 @@ void Scene2::Update()
     grid->RenderHierarchy();
     Cam->RenderHierarchy();
     player->RenderHierarchy();
+    //cannon GUi持失
+    cannon->RenderHierarchy();
     
     for (Airplane* airplane: airplanes)
         airplane->RenderHierarchy();
@@ -289,6 +294,8 @@ void Scene2::Update()
     bullet3->Update();
     bullet4->Update();
     bullet5->Update();
+    //cannon Update
+    cannon->Update();
 
     player->Update();
 
@@ -317,6 +324,8 @@ void Scene2::Render()
     
     for (Airplane* airplane : airplanes)
         airplane->Render();
+    //Cannon Render
+    cannon->Render();
 
     //UI
     booster->Render();
@@ -334,6 +343,7 @@ void Scene2::Render()
     retry->Render();
     open->Render();
     botton->Render();
+    
     
     //////////////////
 }

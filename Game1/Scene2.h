@@ -2,6 +2,7 @@
 #include "Airplane.h"
 #include "ObjectPool.h"
 #include "Player.h"
+#include "Cannon.h"
 
 class Scene2 : public Scene
 {
@@ -9,6 +10,8 @@ private:
 	Camera* Cam;
 	Grid*	grid;
 	Player* player;
+	//대포 클래스생성
+	Cannon* cannon;
 
 	UI* open;
 	UI* botton;
