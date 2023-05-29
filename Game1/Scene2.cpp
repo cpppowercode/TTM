@@ -76,9 +76,9 @@ void Scene2::Init()
     /////////////////////////////////
 
 
-    airplanes = ObjectPool::AirplaneCreate();
+    objects = ObjectPool::AirplaneCreate();
 
-    for (Airplane* airplane : airplanes)
+    for (Airplane* airplane : objects)
     {
         //airplane->LoadFile("Airplane.xml");
         airplane->player = player;
@@ -131,7 +131,7 @@ void Scene2::Update()
     Cam->RenderHierarchy();
     player->RenderHierarchy();
     
-    for (Airplane* airplane: airplanes)
+    for (Airplane* airplane: objects)
         airplane->RenderHierarchy();
 
     ImGui::End();
@@ -292,6 +292,7 @@ void Scene2::Update()
 <<<<<<< Updated upstream
     player->Update();
 
+<<<<<<< HEAD
     for (Airplane* airplane : airplanes)
 =======
     stop->Update();
@@ -301,6 +302,9 @@ void Scene2::Update()
     /////////////////////
     for (Airplane* airplane : objects)
 >>>>>>> Stashed changes
+=======
+    for (Airplane* airplane : objects)
+>>>>>>> parent of 721e4d7 (Update)
         airplane->Update();
 
 }
@@ -317,7 +321,7 @@ void Scene2::Render()
     grid->Render();
     player->Render();
     
-    for (Airplane* airplane : airplanes)
+    for (Airplane* airplane : objects)
         airplane->Render();
 
     //UI
