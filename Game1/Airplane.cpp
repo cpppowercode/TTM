@@ -10,8 +10,10 @@ Airplane* Airplane::Create(string name)
 
 	airPlane->player = Player::Create();
 
-	airPlane->player->GetLocalPos();
-
+	airPlane->SetWorldPos(airPlane->player->GetWorldPos() +
+		Vector3(RANDOM->Float(1.1f, 1.15f),
+			RANDOM->Float(1.1f, 1.15f),
+			RANDOM->Float(1.1f, 1.15f)));
 
 
 	return airPlane;

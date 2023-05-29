@@ -22,7 +22,7 @@ private:
 	UI* bullet4;
 	UI* bullet5;
 
-	vector<Airplane*> objects;
+	vector<Airplane*> airplanes;
 public:
 	Scene2();
 	~Scene2();
