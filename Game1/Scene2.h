@@ -7,6 +7,19 @@ class Scene2 : public Scene
 private:
 	Camera* Cam;
 	Grid*	grid;
+
+	UI* open;
+	UI* botton;
+	UI* booster;
+	UI* bomb;
+	UI* gun;
+	UI* reload;
+	UI* bullet;
+	UI* bullet2;
+	UI* bullet3;
+	UI* bullet4;
+	UI* bullet5;
+
 	vector<Airplane*> objects;
 public:
 	Scene2();

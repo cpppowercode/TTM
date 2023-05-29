@@ -101,6 +101,8 @@ extern Application App;//Extern Global
 #include "Shader.h"
 #include "Transform.h"
 #include "Mesh.h"
+#include "Texture.h"
+
 
 #include "DepthState.h"
 

@@ -71,6 +71,9 @@
     <ClInclude Include="UI.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>GameObject\Member</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="System">
@@ -167,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>GameObject\Member</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

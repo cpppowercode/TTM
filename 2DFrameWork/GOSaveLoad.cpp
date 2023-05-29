@@ -53,7 +53,12 @@ void GameObject::SaveObject(Xml::XMLElement* This, Xml::XMLDocument* doc)
 		This->LinkEndChild(Shader);
 		Shader->SetAttribute("File", shader->file.c_str());
 	}
-	
+	if (texture)
+	{
+		Xml::XMLElement* Texture = doc->NewElement("Texture");
+		This->LinkEndChild(Texture);
+		Texture->SetAttribute("File", texture->file.c_str());
+	}
 
 	Transform::SaveTransform(This, doc);
 
@@ -111,6 +116,12 @@ void GameObject::LoadObject(Xml::XMLElement* This)
 		file = component->Attribute("File");
 		SafeReset(shader);
 		shader = RESOURCE->shaders.Load(file);
+	}
+	if (component = This->FirstChildElement("Texture"))
+	{
+		file = component->Attribute("File");
+		SafeReset(texture);
+		texture = RESOURCE->textures.Load(file);
 	}
 	
 	if (type == ObType::Camera)

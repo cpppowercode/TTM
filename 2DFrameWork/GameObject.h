@@ -31,6 +31,7 @@ protected:
 	shared_ptr<Shader>			shader;
 	
 public:
+	shared_ptr<Texture>			texture;
 	shared_ptr<Mesh>			mesh;
 	string						name;	//key
 	bool						visible;

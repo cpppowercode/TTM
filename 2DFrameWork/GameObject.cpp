@@ -91,6 +91,11 @@ void GameObject::Render()
 			Transform::Set();
 			shader->Set();
 
+			if (texture)
+			{
+				texture->Set(1);
+			}
+
 			D3D->GetDC()->DrawIndexed(mesh->indexCount, 0, 0);
 		}
 	}

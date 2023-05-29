@@ -34,6 +34,7 @@ class ResourceManager : public Singleton<ResourceManager>
 public:
 	Resource<Mesh>			meshes;
 	Resource<Shader>		shaders;
+	Resource<Texture>		textures;
 	void ReleaseAll();
 };
 

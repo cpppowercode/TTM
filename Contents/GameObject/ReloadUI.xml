@@ -1,0 +1,35 @@
+<Root Name="ReloadUI" Visible="false" ObType="4">
+    <Mesh File="Circle.mesh"/>
+    <Shader File="1.UI.hlsl"/>
+    <Transform>
+        <Position X="-0.40000001" Y="-0.64999998" Z="0"/>
+        <Scale X="0.1" Y="0.15000001" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Transform>
+    <UI PivotX="0.5" PivotY="-0.5"/>
+    <Children Size="2"/>
+    <Child0 Name="reloadOFF" Visible="true" ObType="4">
+        <Mesh File="6.UI.mesh"/>
+        <Shader File="6.UI.hlsl"/>
+        <Texture File="reloadOFF.png"/>
+        <Transform>
+            <Position X="0" Y="0" Z="0"/>
+            <Scale X="2" Y="2.5999999" Z="1"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <UI PivotX="0" PivotY="0"/>
+        <Children Size="0"/>
+    </Child0>
+    <Child1 Name="reloadON" Visible="true" ObType="4">
+        <Mesh File="6.UI.mesh"/>
+        <Shader File="6.UI.hlsl"/>
+        <Texture File="reloadON.png"/>
+        <Transform>
+            <Position X="0" Y="0" Z="0"/>
+            <Scale X="2" Y="2.5999999" Z="1"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <UI PivotX="0" PivotY="0"/>
+        <Children Size="0"/>
+    </Child1>
+</Root>

@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{6498
 		Shaders\0.Cube.hlsl = Shaders\0.Cube.hlsl
 		Shaders\1.Cube.hlsl = Shaders\1.Cube.hlsl
 		Shaders\1.UI.hlsl = Shaders\1.UI.hlsl
+		Shaders\6.UI.hlsl = Shaders\6.UI.hlsl
 		Shaders\Common.hlsl = Shaders\Common.hlsl
 	EndProjectSection
 EndProject

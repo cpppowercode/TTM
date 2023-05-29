@@ -12,5 +12,7 @@ public:
 	function<void()> mouseUp = nullptr; //누르고 떼었을때
 
 	bool MouseOver();
-	void	RenderDetail();
+	void RenderDetail();
+	void Render();
+
 };

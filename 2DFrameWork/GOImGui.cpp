@@ -242,7 +242,33 @@ void GameObject::RenderDetail()
 			ImGui::EndTabItem();
 		}
 
+		if (ImGui::BeginTabItem("Texture"))
+		{
+			if (texture)
+			{
+				texture->RenderDetail();
+			}
+			if (GUI->FileImGui("Load Texture", "Load Texture",
+				".dds,.jpg,.tga,.png,.bmp", "../Contents/Texture"))
+			{
+				string path = ImGuiFileDialog::Instance()->GetCurrentPath();
+				Util::Replace(&path, "\\", "/");
+				if (path.find("/Texture/") != -1)
+				{
+					size_t tok = path.find("/Texture/") + 9;
+					path = path.substr(tok, path.length())
+						+ "/" + ImGuiFileDialog::Instance()->GetCurrentFileName();
+				}
+				else
+				{
+					path = ImGuiFileDialog::Instance()->GetCurrentFileName();
+				}
+				SafeReset(texture);
+				texture = RESOURCE->textures.Load(path);
+			}
 
+			ImGui::EndTabItem();
+		}
 		ImGui::EndTabBar();
 	}
 }
@@ -384,4 +410,11 @@ void UI::RenderDetail()
 		}
 		ImGui::EndTabBar();
 	}
+}
+
+void UI::Render()
+{
+	DEPTH->Set(false);
+	Actor::Render();
+	DEPTH->Set(true);
 }
