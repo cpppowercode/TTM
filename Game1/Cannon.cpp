@@ -6,7 +6,10 @@ Cannon* Cannon::Create(string name)
 	Cannon* cannon = new Cannon();
 	cannon->LoadFile("cannon.xml");
 
-
+	//대포 생성시 초기화
+	Vector3(Direction) = Vector3(0, 0, 0);
+	//게이지 초기화
+	float Gauge = 0.0f;
 
 	return cannon;
 }
@@ -20,9 +23,7 @@ Cannon::~Cannon()
 }
 
 void Cannon::Update()
-{
-
-	
+{	
 	//대포 각도 조정
 	if (INPUT->KeyPress(VK_UP))
 	{
@@ -39,6 +40,12 @@ void Cannon::Update()
 			rotation.x += DELTA * 3.14;
 		}
 	}
+
+	//cannon GetForward()값
+	Direction = Find("GunBarrel")->GetForward();
+	/*cout << Direction.x << endl;
+	cout << Direction.y << endl;
+	cout << Direction.z << endl;*/
 
 	Actor::Update();
 }

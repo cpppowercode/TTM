@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airplane.h" />
+    <ClInclude Include="Calculate.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainUI.h" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Airplane.cpp" />
+    <ClCompile Include="Calculate.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainUI.cpp" />
