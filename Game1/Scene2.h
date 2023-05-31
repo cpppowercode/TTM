@@ -4,6 +4,7 @@
 #include "ObjectPool.h"
 #include "Player.h"
 #include "Cannon.h"
+#include "MainUI.h"
 
 
 class Scene2 : public Scene
@@ -12,27 +13,10 @@ private:
 	Camera* Cam;
 	Grid*	grid;
 	Player* player;
+	MainUI* mainUI;
 	//대포 클래스생성
 	Cannon* cannon;
 
-	UI* open;
-	UI* botton;
-	UI* booster;
-	UI* bomb;
-	UI* gun;
-	UI* reload;
-	UI* bullet;
-	UI* bullet2;
-	UI* bullet3;
-	UI* bullet4;
-	UI* bullet5;
-	UI* stop;
-	UI* option;
-	UI* continueUI;
-	UI* retry;
-	UI* gauge;
-	UI* gaugefront;
-	UI* gaugeback;
 
 	vector<Airplane*> airplanes;
 public:
