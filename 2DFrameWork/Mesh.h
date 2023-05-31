@@ -10,11 +10,11 @@ private:
     VertexType              vertexType;
     UINT                    byteWidth;
 
+public:
     UINT*                   indices;
     UINT                    indexCount;
     void*                   vertices;
     UINT                    vertexCount;
-public:
     string                  file;
 public:
     Mesh();
@@ -22,5 +22,6 @@ public:
     void Set();
     void LoadFile(string file);
     void SaveFile(string file);
+    void Reset();
 };
 

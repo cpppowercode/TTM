@@ -4,7 +4,6 @@
 MainUI* MainUI::Create(string name)
 {
 	MainUI* mainui = new MainUI();
-	
 
     ///UI 시작화면
     mainui->open = UI::Create();

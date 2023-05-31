@@ -5,7 +5,7 @@ GameObject::GameObject()
 	type = ObType::GameObject;
 	root = nullptr;
 	visible = true;
-	//mesh = make_shared<Mesh>();
+	mesh = make_shared<Mesh>();
 }
 Actor::Actor()
 {

@@ -28,9 +28,9 @@ public:
 	//member
 protected:
 	ObType						type;
-	shared_ptr<Shader>			shader;
 	
 public:
+	shared_ptr<Shader>			shader;
 	shared_ptr<Texture>			texture;
 	shared_ptr<Mesh>			mesh;
 	string						name;	//key
