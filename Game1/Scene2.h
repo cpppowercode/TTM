@@ -30,6 +30,9 @@ private:
 	UI* option;
 	UI* continueUI;
 	UI* retry;
+	UI* gauge;
+	UI* gaugefront;
+	UI* gaugeback;
 
 	vector<Airplane*> airplanes;
 public:

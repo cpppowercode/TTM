@@ -73,6 +73,17 @@ void Scene2::Init()
 
     retry = UI::Create();
     retry->LoadFile("RetryUI.xml");
+
+    //Gauge UI
+    gauge = UI::Create();
+    gauge->LoadFile("GaugeUI.xml");
+
+    gaugefront = UI::Create();
+    gaugefront->LoadFile("GaugeFrontUI.xml");
+
+    gaugeback = UI::Create();
+    gaugeback->LoadFile("GaugeBackUI.xml");
+
     //Cannon »ı¼º
     cannon = Cannon::Create();
     cannon->LoadFile("cannon.xml");
@@ -129,6 +140,9 @@ void Scene2::Update()
     option->RenderHierarchy();
     continueUI->RenderHierarchy();
     retry->RenderHierarchy();
+    gauge->RenderHierarchy();
+    gaugefront->RenderHierarchy();
+    gaugeback->RenderHierarchy();
     //////////////////////////
     grid->RenderHierarchy();
     Cam->RenderHierarchy();
@@ -338,15 +352,17 @@ void Scene2::Update()
     bullet3->Update();
     bullet4->Update();
     bullet5->Update();
-    //cannon Update
-    cannon->Update();
-
-    player->Update();
-
+    gauge->Update();
+    gaugefront->Update();
+    gaugeback->Update();
     stop->Update();
     option->Update();
     continueUI->Update();
     retry->Update();
+
+    //cannon Update
+    cannon->Update();
+    player->Update();
     /////////////////////
 
     for (Airplane* airplane : airplanes)
@@ -381,6 +397,9 @@ void Scene2::Render()
     bullet3->Render();
     bullet4->Render();
     bullet5->Render();
+    gaugeback->Render();
+    gauge->Render();
+    gaugefront->Render();
     stop->Render();
     option->Render();
     continueUI->Render();

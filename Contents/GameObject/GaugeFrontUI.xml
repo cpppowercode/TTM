@@ -1,0 +1,24 @@
+<Root Name="GaugeFrontUI" Visible="false" ObType="4">
+    <Mesh File="Circle.mesh"/>
+    <Shader File="1.UI.hlsl"/>
+    <Texture File="gaugeback.png"/>
+    <Transform>
+        <Position X="0.18000001" Y="0.23" Z="0"/>
+        <Scale X="0.1" Y="1.2" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Transform>
+    <UI PivotX="0" PivotY="0.5"/>
+    <Children Size="1"/>
+    <Child0 Name="GaugeFront" Visible="true" ObType="4">
+        <Mesh File="6.UI.mesh"/>
+        <Shader File="6.UI.hlsl"/>
+        <Texture File="gaugefront.png"/>
+        <Transform>
+            <Position X="2" Y="-1.0666666" Z="0"/>
+            <Scale X="1.15" Y="0.76999998" Z="1"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <UI PivotX="0" PivotY="0.5"/>
+        <Children Size="0"/>
+    </Child0>
+</Root>
