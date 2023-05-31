@@ -1,14 +1,13 @@
 ﻿  BinaryFile.cpp
   Camera.cpp
+  Collider.cpp
   DepthState.cpp
   Direct3D11.cpp
   Dwrite.cpp
   GameObject.cpp
   GOImGui.cpp
-  Grid.cpp
 C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Dwrite.cpp(176,5): warning C4267: '인수': 'size_t'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Grid.cpp(31,10): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Grid.cpp(34,10): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Grid.cpp
   Gui.cpp
   Input.cpp
   Mesh.cpp
@@ -16,8 +15,10 @@ C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Grid.cpp(34,10): warning C4244: 
   GOSaveLoad.cpp
   ResourceManager.cpp
   SceneManager.cpp
-  Shader.cpp
+C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Grid.cpp(31,10): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\Grid.cpp(34,10): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\jsmj1\Documents\GitHub\TTM\2DFrameWork\GOSaveLoad.cpp(28,19): warning C4101: 'component' :참조되지 않은 지역 변수입니다.
+  Shader.cpp
   Sound.cpp
   Texture.cpp
   Timer.cpp

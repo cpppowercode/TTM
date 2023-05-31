@@ -102,7 +102,7 @@ extern Application App;//Extern Global
 #include "Transform.h"
 #include "Mesh.h"
 #include "Texture.h"
-
+#include "Collider.h"
 
 #include "DepthState.h"
 

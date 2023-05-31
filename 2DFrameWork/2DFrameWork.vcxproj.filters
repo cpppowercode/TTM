@@ -74,6 +74,7 @@
     <ClInclude Include="Texture.h">
       <Filter>GameObject\Member</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="System">
@@ -174,5 +175,6 @@
     <ClCompile Include="Texture.cpp">
       <Filter>GameObject\Member</Filter>
     </ClCompile>
+    <ClCompile Include="Collider.cpp" />
   </ItemGroup>
 </Project>

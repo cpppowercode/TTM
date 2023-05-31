@@ -35,6 +35,7 @@ public:
 	shared_ptr<Mesh>			mesh;
 	string						name;	//key
 	bool						visible;
+	class Collider*				collider;
 	class Actor*				root;
 	map<string, GameObject*>	children;
 	
@@ -51,6 +52,8 @@ public:
 	void			AddChild(GameObject* child);
 	virtual bool	RenderHierarchy();
 	virtual void	RenderDetail();
+	bool            Intersect(GameObject* target);
+	bool            Intersect(Ray Ray, Vector3& Hit);
 
 	//Getter Setter
 };

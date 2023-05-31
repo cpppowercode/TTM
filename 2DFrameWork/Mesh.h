@@ -2,6 +2,7 @@
 class Mesh
 {
     friend class GameObject;
+    friend class Collider;
 private:
     ID3D11Buffer*           vertexBuffer;
     ID3D11Buffer*           indexBuffer;
