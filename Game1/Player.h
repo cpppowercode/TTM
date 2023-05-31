@@ -10,12 +10,14 @@ public:
     float   scalar;
     // player's move velocity rotation seta
     // 근데 이거 seta 값을 ToRadian 해야하나 말아야하나 모름
-    float   seta;
+    Vector3   seta;
     float   gravity;
 
     class Actor* Ani;
     int src, dest;
     float t = 0.0f;
+
+    bool IsFire;
 
 public:
     void	Update() override;
@@ -36,14 +38,14 @@ public:
 
     // player's scalar and shooting rotation seta setting
     void    SetScalar(float scalar) { this->scalar = scalar; }
-    void    SetSeta(float seta) { this->seta = seta; }
+    void    SetSeta(Vector3 seta) { this->seta = seta; }
 
     // player's gravity get, set
     void    SetGravity(float gravity) { this->gravity = gravity; }
     float   GetGravity() { return gravity; }
 
     // player's Move WorldPos
-    void    MovePlayer(float scalar, float seta);
+    void    MovePlayer(float scalar, Vector3 seta);
 
     // if player's animation change, animation's pos setting
     void    PlayerAnimationPosSetting(Actor* Animation, int size);

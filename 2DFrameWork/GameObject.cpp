@@ -73,11 +73,19 @@ Actor* Actor::Create(string name)
 void GameObject::Update()
 {
 
+
 	Transform::Update();
 
 
 	for (auto it = children.begin(); it != children.end(); it++)
+	{
+		if (!visible)
+			it->second->visible = false;
+		else
+			it->second->visible = true;
+		
 		it->second->Update();
+	}
 }
 
 void GameObject::Render()

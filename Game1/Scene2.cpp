@@ -279,6 +279,50 @@ void Scene2::Update()
         retry->Find("retry")->scale.y = 1.0f;
     }
 
+    // 플레이어 날리기 실험용 추가본
+
+    // 캐논 게이지 추가
+    if (INPUT->KeyPress(VK_SPACE))
+    {
+        cannon->Gauge += 100 * DELTA;
+    }
+
+    // 캐논 발사되는 순간
+    if (INPUT->KeyUp(VK_SPACE))
+    {
+        player->visible = true;
+        player->scalar = cannon->Gauge;
+        player->IsFire = true;
+        player->gravity = 10.0f;
+        Camera::main = (Camera*)player->Find("BackCam");
+    }
+
+    // 캐논 발사 전 위치 및 회전각도 조정
+    if (player->IsFire == false)
+    {
+        player->visible = false;
+        player->SetPlayerWorldPos(cannon->Find("Cannon")->GetWorldPos());
+        player->SetPlayerRotationX(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN));
+    }
+
+    // 플레이어 이동
+    player->MovePlayer(player->scalar, cannon->Direction);
+
+    // 플레이어 발사 후 회전
+    if (player->IsFire)
+    {
+        Vector3 velocity
+            = (cannon->Direction * player->scalar) - (UP * player->gravity);
+
+        player->Find("HoleBone")->rotation.x = (-atan2f(velocity.y, velocity.z) + (90 * TORADIAN));
+
+        cout << player->Find("HoleBone")->rotation.x << endl;
+    }
+
+
+
+    
+
     Cam->Update();
     grid->Update();
 
