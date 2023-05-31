@@ -1,8 +1,10 @@
 #pragma once
+#include "Calculate.h"
 #include "Airplane.h"
 #include "ObjectPool.h"
 #include "Player.h"
 #include "Cannon.h"
+
 
 class Scene2 : public Scene
 {
