@@ -22,7 +22,7 @@
         <Transform>
             <Position X="0" Y="0" Z="0"/>
             <Scale X="1" Y="1" Z="1"/>
-            <Rotation X="1.5707964" Y="0" Z="0"/>
+            <Rotation X="0" Y="3.1415927" Z="0"/>
         </Transform>
         <Children Size="3"/>
         <Child0 Name="BodyBone" Visible="true" ObType="1">
@@ -35,8 +35,9 @@
             </Transform>
             <Children Size="4"/>
             <Child0 Name="Body" Visible="true" ObType="1">
-                <Mesh File="1.Cube.mesh"/>
-                <Shader File="1.Cube.hlsl"/>
+                <Mesh File="6.TossManBody.mesh"/>
+                <Shader File="6.Cube.hlsl"/>
+                <Texture File="Turtle.png"/>
                 <Transform>
                     <Position X="0" Y="1.5" Z="0"/>
                     <Scale X="1" Y="1.5" Z="0.5"/>
@@ -54,8 +55,8 @@
                 </Transform>
                 <Children Size="1"/>
                 <Child0 Name="LeftArm" Visible="true" ObType="1">
-                    <Mesh File="1.Cube.mesh"/>
-                    <Shader File="1.Cube.hlsl"/>
+                    <Mesh File="6.TossManLeftArm.mesh"/>
+                    <Shader File="6.Cube.hlsl"/>
                     <Transform>
                         <Position X="0" Y="-1" Z="0"/>
                         <Scale X="0.5" Y="1.5" Z="0.5"/>
@@ -83,8 +84,8 @@
                     </Transform>
                     <Children Size="1"/>
                     <Child0 Name="Head" Visible="true" ObType="0">
-                        <Mesh File="1.Cube.mesh"/>
-                        <Shader File="1.Cube.hlsl"/>
+                        <Mesh File="6.TossManHead.mesh"/>
+                        <Shader File="6.Cube.hlsl"/>
                         <Transform>
                             <Position X="0" Y="0" Z="0"/>
                             <Scale X="1" Y="1" Z="1"/>
@@ -104,8 +105,8 @@
                 </Transform>
                 <Children Size="1"/>
                 <Child0 Name="RightArm" Visible="true" ObType="1">
-                    <Mesh File="1.Cube.mesh"/>
-                    <Shader File="1.Cube.hlsl"/>
+                    <Mesh File="6.TossManRightArm.mesh"/>
+                    <Shader File="6.Cube.hlsl"/>
                     <Transform>
                         <Position X="0" Y="-1" Z="0"/>
                         <Scale X="0.5" Y="1.5" Z="0.5"/>
@@ -125,8 +126,8 @@
             </Transform>
             <Children Size="1"/>
             <Child0 Name="LeftLeg" Visible="true" ObType="1">
-                <Mesh File="1.Cube.mesh"/>
-                <Shader File="1.Cube.hlsl"/>
+                <Mesh File="6.TossManLeftLeg.mesh"/>
+                <Shader File="6.Cube.hlsl"/>
                 <Transform>
                     <Position X="0" Y="-1.5" Z="0"/>
                     <Scale X="0.5" Y="1.5" Z="0.5"/>
@@ -145,8 +146,8 @@
             </Transform>
             <Children Size="1"/>
             <Child0 Name="RightLeg" Visible="true" ObType="1">
-                <Mesh File="1.Cube.mesh"/>
-                <Shader File="1.Cube.hlsl"/>
+                <Mesh File="6.TossManRightLeg.mesh"/>
+                <Shader File="6.Cube.hlsl"/>
                 <Transform>
                     <Position X="0" Y="-1.5" Z="0"/>
                     <Scale X="0.5" Y="1.5" Z="0.5"/>
