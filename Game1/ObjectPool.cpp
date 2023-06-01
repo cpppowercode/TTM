@@ -2,7 +2,7 @@
 #include "Airplane.h"
 #include "ObjectPool.h"
 
-#define INITIAL_POOL_SIZE 20
+#define INITIAL_POOL_SIZE 50
 
 vector<Airplane*> ObjectPool::AirplaneCreate(string name)
 {
@@ -45,12 +45,12 @@ Airplane* ObjectPool::GetAirplane()
 
 void ObjectPool::Release()
 {
-    for (Airplane* airplane : airplanePool)
-    {
-        airplane->isInUse = false;
-        // airplane->Reset();
-
-        airPlane->Release();
-    }
-    airplanePool.clear();
+    //for (Airplane* airplane : airplanePool)
+    //{
+    //    airplane->isInUse = false;
+    //    // airplane->Reset();
+    //
+    //    airPlane->Release();
+    //}
+    //airplanePool.clear();
 }

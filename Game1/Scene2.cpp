@@ -143,7 +143,6 @@ void Scene2::Render()
 
     grid->Render();
     player->Render();
-    mainUI->Render();
     
     for (Airplane* airplane : airplanes)
         airplane->Render();
@@ -151,6 +150,7 @@ void Scene2::Render()
     cannon->Render();
 
     //////////////////
+    mainUI->Render();
 }
 
 void Scene2::PreRender()

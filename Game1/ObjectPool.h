@@ -9,7 +9,6 @@ public:
     Airplane* GetAirplane();
     static vector<Airplane*> AirplaneCreate(string name = "Airplane");
 
-
     void	Release() override;
 private:
     vector<Airplane*> airplanePool;

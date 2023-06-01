@@ -12,7 +12,7 @@ Scene1::Scene1()
     Player->shader->LoadFile("6.Cube.hlsl");
 
     Player->texture = make_shared<Texture>();
-    Player->texture->LoadFile("Bold.png");
+    Player->texture->LoadFile("camo.png");
 
     grid = Grid::Create();
 
