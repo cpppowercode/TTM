@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainUI.h"
+#include "Player.h"
 
 MainUI* MainUI::Create(string name)
 {
@@ -76,6 +77,7 @@ void MainUI::Release()
 	delete this;
 }
 
+
 MainUI::MainUI()
 {
 }
@@ -86,25 +88,6 @@ MainUI::~MainUI()
 
 void MainUI::Update()
 {
-    //UI
-    open->RenderHierarchy();
-    botton->RenderHierarchy();
-    booster->RenderHierarchy();
-    bomb->RenderHierarchy();
-    reload->RenderHierarchy();
-    gun->RenderHierarchy();
-    bullet->RenderHierarchy();
-    bullet2->RenderHierarchy();
-    bullet3->RenderHierarchy();
-    bullet4->RenderHierarchy();
-    bullet5->RenderHierarchy();
-    stop->RenderHierarchy();
-    option->RenderHierarchy();
-    continueUI->RenderHierarchy();
-    retry->RenderHierarchy();
-    gauge->RenderHierarchy();
-    gaugefront->RenderHierarchy();
-    gaugeback->RenderHierarchy();
 
     //UI 시작화면
     if (botton->MouseOver())
@@ -132,6 +115,7 @@ void MainUI::Update()
 
         if (booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            player->scalar += 200.0f;
             booster->Find("boosterON")->visible = false;
         }
 
@@ -292,4 +276,25 @@ void MainUI::Render()
 
 }
 
-
+void MainUI::Hierarchy()
+{
+    //UI
+    open->RenderHierarchy();
+    botton->RenderHierarchy();
+    booster->RenderHierarchy();
+    bomb->RenderHierarchy();
+    reload->RenderHierarchy();
+    gun->RenderHierarchy();
+    bullet->RenderHierarchy();
+    bullet2->RenderHierarchy();
+    bullet3->RenderHierarchy();
+    bullet4->RenderHierarchy();
+    bullet5->RenderHierarchy();
+    stop->RenderHierarchy();
+    option->RenderHierarchy();
+    continueUI->RenderHierarchy();
+    retry->RenderHierarchy();
+    gauge->RenderHierarchy();
+    gaugefront->RenderHierarchy();
+    gaugeback->RenderHierarchy();
+}

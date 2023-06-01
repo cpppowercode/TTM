@@ -3,7 +3,7 @@ class MainUI : public Actor
 {
 public:
     static MainUI* Create(string name = "MainUI");
-
+	class Player* player;
 
 	UI* open;
 	UI* botton;
@@ -33,5 +33,5 @@ public:
     void	Update() override;
     void	Render() override;
     void	Release() override;
-
+	void	Hierarchy();
 };

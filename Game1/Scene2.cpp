@@ -26,6 +26,7 @@ void Scene2::Init()
     player->Update();
 
     mainUI = MainUI::Create();
+    mainUI->player = player;
 
     //Cannon 생성
     cannon = Cannon::Create();
@@ -53,6 +54,7 @@ void Scene2::Release()
 
 void Scene2::Update()
 {
+    cout << player->scalar << endl;
     Camera::main->width = App.GetWidth();
     Camera::main->height = App.GetHeight();
     Camera::main->viewport.width = App.GetWidth();
@@ -72,6 +74,7 @@ void Scene2::Update()
     player->RenderHierarchy();
     //cannon GUi생성
     cannon->RenderHierarchy();
+    mainUI->Hierarchy();
     
     for (Airplane* airplane: airplanes)
         airplane->RenderHierarchy();
@@ -82,12 +85,21 @@ void Scene2::Update()
     // 캐논 게이지 추가
     if (INPUT->KeyPress(VK_SPACE))
     {
-        cannon->Gauge += 100 * DELTA;
+        mainUI->gaugefront->Find("GaugeFront")->scale.y = Util::Saturate(mainUI->gaugefront->Find("GaugeFront")->scale.y, 0.0f, 0.77f);
+        if (mainUI->gaugefront->Find("GaugeFront")->scale.y == 0.77f)
+        {
+            mainUI->gaugefront->Find("GaugeFront")->scale.y = 0.0f;
+        }
+        mainUI->gaugefront->Find("GaugeFront")->scale.y += 0.5 * DELTA;
+        cannon->Gauge += (mainUI->gaugefront->Find("GaugeFront")->scale.y * 200.0f) * DELTA;
     }
 
     // 캐논 발사되는 순간
     if (INPUT->KeyUp(VK_SPACE))
     {
+        mainUI->gaugefront->Find("GaugeFront")->visible = false;
+        mainUI->gauge->Find("Gauge")->visible = false;
+        mainUI->gaugeback->Find("GaugeBack")->visible = false;
         player->visible = true;
         player->scalar = cannon->Gauge;
         player->IsFire = true;
@@ -114,7 +126,7 @@ void Scene2::Update()
 
         player->Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
 
-        cout << player->Find("HoleBone")->rotation.x << endl;
+       // cout << player->Find("HoleBone")->rotation.x << endl;
     }
 
     ImGui::End();
