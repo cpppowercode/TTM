@@ -100,7 +100,7 @@ void Scene2::Update()
     {
         player->visible = false;
         player->SetPlayerWorldPos(cannon->Find("Cannon")->GetWorldPos());
-        player->SetPlayerRotationX(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN));
+        player->SetPlayerRotationX(-(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN)));
     }
 
     // 플레이어 이동
@@ -112,7 +112,7 @@ void Scene2::Update()
         Vector3 velocity
             = (cannon->Direction * player->scalar) - (UP * player->gravity);
 
-        player->Find("HoleBone")->rotation.x = (-atan2f(velocity.y, velocity.z) + (90 * TORADIAN));
+        player->Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
 
         cout << player->Find("HoleBone")->rotation.x << endl;
     }
