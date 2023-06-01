@@ -13,7 +13,7 @@ public:
     Vector3   seta;
     float   gravity;
 
-    class Actor* Ani;
+    class Actor* Ani[4];
     int src, dest;
     float t = 0.0f;
 

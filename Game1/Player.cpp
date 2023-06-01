@@ -6,7 +6,24 @@ Player* Player::Create(string name)
 	Player* player = new Player();
 	player->LoadFile("TTM.xml");
 
-	
+	/*
+		player->Ani[0] = Actor::Create();
+		player->Ani[0]->LoadFile("TTM.xml");
+		player->Ani[0]->Update();
+
+		player->Ani[1] = Actor::Create();
+		player->Ani[1]->LoadFile("TTMAni1.xml");
+		player->Ani[1]->Update();
+
+		player->Ani[2] = Actor::Create();
+		player->Ani[2]->LoadFile("TTMAni2.xml");
+		player->Ani[2]->Update();
+
+		player->Ani[3] = Actor::Create();
+		player->Ani[3]->LoadFile("TTMAni3.xml");
+		player->Ani[3]->Update();
+	*/
+  
 	player->IsFire = false;
 	player->gravity = 0.0f;
 	return player;
@@ -43,8 +60,8 @@ void Player::PlayerAnimationPosSetting(Actor* Animation, int size)
 // 수업시간에 쓴 애니메이션 함수 복붙
 void Player::Animation(GameObject* root)
 {
-	GameObject* _src = Ani[src].Find(root->name);
-	GameObject* _dest = Ani[dest].Find(root->name);
+	GameObject* _src = Ani[src]->Find(root->name);
+	GameObject* _dest = Ani[dest]->Find(root->name);
 	Vector3 CurrentPos = _src->GetWorldPos();
 	root->SetLocalPos(Util::Lerp(_src->GetLocalPos(),
 		_dest->GetLocalPos(), t));
