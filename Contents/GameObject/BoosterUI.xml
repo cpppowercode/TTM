@@ -2,8 +2,8 @@
     <Mesh File="Circle.mesh"/>
     <Shader File="1.UI.hlsl"/>
     <Transform>
-        <Position X="-0.89999998" Y="-0.64999998" Z="0"/>
-        <Scale X="0.1" Y="0.15000001" Z="1"/>
+        <Position X="-0.89999998" Y="-0.7" Z="0"/>
+        <Scale X="0.06" Y="0.14000001" Z="0"/>
         <Rotation X="0" Y="0" Z="0"/>
     </Transform>
     <UI PivotX="0.5" PivotY="-0.5"/>

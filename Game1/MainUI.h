@@ -4,6 +4,7 @@ class MainUI : public Actor
 public:
     static MainUI* Create(string name = "MainUI");
 	class Player* player;
+	bool Option;
 
 	UI* open;
 	UI* botton;

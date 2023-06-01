@@ -2,11 +2,11 @@
     <Mesh File="1.Rect.mesh"/>
     <Shader File="1.UI.hlsl"/>
     <Transform>
-        <Position X="-0.56999999" Y="0.74000001" Z="0"/>
-        <Scale X="1.2" Y="1.2" Z="1"/>
+        <Position X="0.029999999" Y="0.14" Z="0"/>
+        <Scale X="0.80000001" Y="0.80000001" Z="1"/>
         <Rotation X="0" Y="0" Z="0"/>
     </Transform>
-    <UI PivotX="0.5" PivotY="-0.5"/>
+    <UI PivotX="0" PivotY="0"/>
     <Children Size="1"/>
     <Child0 Name="option" Visible="false" ObType="4">
         <Mesh File="6.UI.mesh"/>
@@ -14,7 +14,7 @@
         <Texture File="option.png"/>
         <Transform>
             <Position X="0" Y="0" Z="0"/>
-            <Scale X="1" Y="1" Z="1"/>
+            <Scale X="0" Y="0" Z="1"/>
             <Rotation X="0" Y="0" Z="0"/>
         </Transform>
         <UI PivotX="0" PivotY="0"/>

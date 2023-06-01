@@ -2,11 +2,11 @@
     <Mesh File="1.Rect.mesh"/>
     <Shader File="1.UI.hlsl"/>
     <Transform>
-        <Position X="0.050000001" Y="0.23999999" Z="0"/>
-        <Scale X="0.52999997" Y="0.44999999" Z="1"/>
+        <Position X="0.22" Y="0.055" Z="0"/>
+        <Scale X="0.37" Y="0.34999999" Z="1"/>
         <Rotation X="0" Y="0" Z="0"/>
     </Transform>
-    <UI PivotX="0.5" PivotY="-0.5"/>
+    <UI PivotX="0" PivotY="0"/>
     <Children Size="1"/>
     <Child0 Name="retry" Visible="false" ObType="4">
         <Mesh File="6.UI.mesh"/>

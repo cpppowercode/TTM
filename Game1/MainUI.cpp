@@ -64,6 +64,7 @@ MainUI* MainUI::Create(string name)
     mainui->gaugeback = UI::Create();
     mainui->gaugeback->LoadFile("GaugeBackUI.xml");
 
+    mainui->Option = false;
 
 	return mainui;
 }
@@ -179,12 +180,13 @@ void MainUI::Update()
         stop->Find("stop")->scale.x = RANDOM->Float(1.15f, 1.2f);
         stop->Find("stop")->scale.y = RANDOM->Float(1.15f, 1.2f);
 
+
         if (option->Find("option")->visible == false && INPUT->KeyDown(VK_LBUTTON))
         {
+            Option = true;
             App.deltaScale = 0.0f;
+            
             option->Find("option")->visible = true;
-            continueUI->Find("continue")->visible = true;
-            retry->Find("retry")->visible = true;
         }
     }
     else
@@ -200,6 +202,9 @@ void MainUI::Update()
 
         if (option->Find("option")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            option->Find("option")->scale.x = 0.0f;
+            option->Find("option")->scale.y = 0.0f;
+            Option = false;
             App.deltaScale = 1.0f;
             option->Find("option")->visible = false;
             continueUI->Find("continue")->visible = false;
@@ -229,6 +234,19 @@ void MainUI::Update()
     }
 
 
+    if (Option == true)
+    {
+        option->Find("option")->scale.x = Util::Saturate(option->Find("option")->scale.x, 0.0f, 1.0f);
+        option->Find("option")->scale.y = Util::Saturate(option->Find("option")->scale.y, 0.0f, 1.0f);
+        option->Find("option")->scale.x += 0.01f;
+        option->Find("option")->scale.y += 0.01f;
+        if (option->Find("option")->scale.x == 1.01f)
+        {
+            continueUI->Find("continue")->visible = true;
+            retry->Find("retry")->visible = true;
+        }
+    }
+    
     //UI
     open->Update();
     botton->Update();
