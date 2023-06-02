@@ -2,6 +2,11 @@
     <Mesh File="6.Edit.mesh"/>
     <Shader File="6.Cube.hlsl"/>
     <Texture File="camo.png"/>
+    <Collider ColliderType="1" Visible="false">
+        <Position X="0" Y="0" Z="0"/>
+        <Scale X="1" Y="1" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Collider>
     <Transform>
         <Position X="0" Y="0" Z="0"/>
         <Scale X="9" Y="1" Z="1.7"/>

@@ -1,3 +1,5 @@
+#include "Player.h"
+
 #pragma once
 class Airplane : public Actor
 {
@@ -11,6 +13,7 @@ private:
 
 public:
     void	Update() override;
+    void	LateUpdate();
     void	Release() override;
     void    Reset();
 };

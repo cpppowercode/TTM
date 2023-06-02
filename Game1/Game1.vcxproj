@@ -24,6 +24,7 @@
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainUI.h" />
+    <ClInclude Include="Malphite.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene2.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainUI.cpp" />
+    <ClCompile Include="Malphite.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene2.cpp" />
