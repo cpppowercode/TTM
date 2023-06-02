@@ -118,7 +118,7 @@ void MainUI::Update()
 
         if (booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            cannon->Gauge += 2000.0f;
+            player->BoosterScalar *= 20.0f;
             booster->Find("boosterON")->visible = false;
         }
 

@@ -6,26 +6,31 @@ Player* Player::Create(string name)
 	Player* player = new Player();
 	player->LoadFile("TTM.xml");
 
-	/*
-		player->Ani[0] = Actor::Create();
-		player->Ani[0]->LoadFile("TTM.xml");
-		player->Ani[0]->Update();
+	
+	player->Ani[0] = Actor::Create();
+	player->Ani[0]->LoadFile("TTM.xml");
+	player->Ani[0]->Update();
 
-		player->Ani[1] = Actor::Create();
-		player->Ani[1]->LoadFile("TTMAni1.xml");
-		player->Ani[1]->Update();
+	player->Ani[1] = Actor::Create();
+	player->Ani[1]->LoadFile("TTMAni1.xml");
+	player->Ani[1]->Update();
 
-		player->Ani[2] = Actor::Create();
-		player->Ani[2]->LoadFile("TTMAni2.xml");
-		player->Ani[2]->Update();
+	player->Ani[2] = Actor::Create();
+	player->Ani[2]->LoadFile("TTMAni2.xml");
+	player->Ani[2]->Update();
 
-		player->Ani[3] = Actor::Create();
-		player->Ani[3]->LoadFile("TTMAni3.xml");
-		player->Ani[3]->Update();
-	*/
+	player->Ani[3] = Actor::Create();
+	player->Ani[3]->LoadFile("TTMAni3.xml");
+	player->Ani[3]->Update();
+	
   
 	player->IsFire = false;
 	player->gravity = 0.0f;
+	player->scalar = 0.0f;
+	player->BoosterScalar = 1.0f;
+	player->src = 0;
+	player->dest = 0;
+	player->t = 1.0f;
 	return player;
 }
 
@@ -43,7 +48,11 @@ void Player::MovePlayer(float scalar, Vector3 seta)
 	// ZY 평면에서의 벡터값에 중력 뺀 방향으로 이동시키는 함수인데 의미가 있나...?
 	if (IsFire)
 	{
-		Find(root->name)->MoveWorldPos((seta * scalar) * DELTA - (UP * gravity) * DELTA);
+		Find(root->name)->MoveWorldPos(((seta * scalar) - (UP * gravity)) * BoosterScalar * DELTA);
+		for (int i = 0; i < 4; i++)
+		{
+			Ani[i]->MoveWorldPos(((seta * scalar) - (UP * gravity)) * BoosterScalar * DELTA);
+		}
 		gravity += 10 * DELTA;
 	}
 }
@@ -51,18 +60,14 @@ void Player::MovePlayer(float scalar, Vector3 seta)
 void Player::PlayerAnimationPosSetting(Actor* Animation, int size)
 {
 	// 애니메이션 부르기 전에 기존에 불러왔던 xml들 초기 위치를 플레이어 위치로 이동시킴
-	for (int i = 0; i < size; i++)
-	{
-		Animation[size].SetWorldPos(Find("HoleBone")->GetWorldPos());
-	}
+	
 }
 
 // 수업시간에 쓴 애니메이션 함수 복붙
 void Player::Animation(GameObject* root)
 {
 	GameObject* _src = Ani[src]->Find(root->name);
-	GameObject* _dest = Ani[dest]->Find(root->name);
-	Vector3 CurrentPos = _src->GetWorldPos();
+	GameObject* _dest = Ani[dest]->Find(root->name);	
 	root->SetLocalPos(Util::Lerp(_src->GetLocalPos(),
 		_dest->GetLocalPos(), t));
 	//root->rotation =
@@ -80,20 +85,32 @@ void Player::Animation(GameObject* root)
 		Animation(it->second);
 	}
 
-	_dest->SetWorldPos(CurrentPos);
+}
+
+void Player::ChangeAni()
+{
+	// 밑의 주석은 애니메이션 변경 실험용임. 
+	t = 0;
+	if (dest == 3)
+	{
+		dest = 0;
+	}
+	else
+	{
+		dest++;
+	}	
 }
 
 Vector3 Player::GetPlayerWorldPos()
 {
-	GameObject* Pos = Find("HoleBone");
 	
-	return Pos->GetWorldPos();
+	
+	return GetWorldPos();
 }
 
 void Player::SetPlayerWorldPos(Vector3 pos)
 {
-	GameObject* Pos = Find("HoleBone");
-	Pos->SetWorldPos(pos);
+	SetWorldPos(pos);
 }
 
 void Player::SetPlayerRotationX(float rot)
@@ -143,7 +160,20 @@ Player::~Player()
 
 void Player::Update()
 {
+	if (t < 1.0f)
+	{
 
+		Animation(Find(root->name));
+
+
+
+		t += DELTA;
+		if (t >= 1.0f)
+		{
+			t = 1.0f;
+			src = dest;
+		}
+	}
 	Actor::Update();
 }
 

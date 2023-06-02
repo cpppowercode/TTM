@@ -13,6 +13,9 @@ public:
     Vector3   seta;
     float   gravity;
 
+    //아이템 사용시 증가량.
+    float   BoosterScalar;
+
     class Actor* Ani[4];
     int src, dest;
     float t = 0.0f;
@@ -52,5 +55,7 @@ public:
 
     // animation function
     void Animation(GameObject* root);
+
+    void ChangeAni();
 };
 
