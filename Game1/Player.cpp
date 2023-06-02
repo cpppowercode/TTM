@@ -1,15 +1,18 @@
 #include "stdafx.h"
 #include "Cannon.h"
+#include "Airplane.h"
+#include "ObjectPool.h"
+#include "MainUI.h"
 #include "Player.h"
 
 Player* Player::Create(string name)
 {
 	Player* player = new Player();
-	player->LoadFile("TTM.xml");
+	player->LoadFile("TTMtest.xml");
 
 	
 	player->Ani[0] = Actor::Create();
-	player->Ani[0]->LoadFile("TTM.xml");
+	player->Ani[0]->LoadFile("TTMtest.xml");
 	player->Ani[0]->Update();
 
 	player->Ani[1] = Actor::Create();
@@ -126,6 +129,8 @@ void Player::SetPlayerRotationX(float rot)
 	Rot->rotation.x = rot;
 }
 
+
+
 void Player::SetPlayerRotationY(float rot)
 {
 	GameObject* Rot = Find("HoleBone");
@@ -195,5 +200,7 @@ void Player::Update()
 
 	Actor::Update();
 }
+
+
 
 

@@ -28,7 +28,7 @@ public:
 public:
     void	Update() override;
     void	Release() override;
-    
+
     //player root worldPos
     Vector3 GetPlayerWorldPos();
     void    SetPlayerWorldPos(Vector3 pos);

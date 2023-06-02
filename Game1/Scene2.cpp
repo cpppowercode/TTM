@@ -44,6 +44,7 @@ void Scene2::Init()
         airplane->player = player;
     }
 
+    
     grid =  Grid::Create();
 }
 
