@@ -22,6 +22,9 @@ public:
 
     bool IsFire;
 
+    Vector3 velocity;
+    class Cannon* cannon;
+
 public:
     void	Update() override;
     void	Release() override;
@@ -48,7 +51,7 @@ public:
     float   GetGravity() { return gravity; }
 
     // player's Move WorldPos
-    void    MovePlayer(float scalar, Vector3 seta);
+    void    MovePlayer();
 
     // if player's animation change, animation's pos setting
     void    PlayerAnimationPosSetting(Actor* Animation, int size);
@@ -57,5 +60,9 @@ public:
     void Animation(GameObject* root);
 
     void ChangeAni();
+
+    // velocity ¼³Á¤
+    void SetVelocity();
+    Vector3 GetVelocity() { this->velocity = velocity; }
 };
 

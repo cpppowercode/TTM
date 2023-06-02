@@ -34,6 +34,7 @@ void Scene2::Init()
     cannon->LoadFile("cannon.xml");
     /////////////////////////////////
     mainUI->cannon = cannon;
+    player->cannon = cannon;
 
     airplanes = ObjectPool::AirplaneCreate();
 
@@ -116,6 +117,7 @@ void Scene2::Update()
         player->visible = true;
         
         player->scalar  = cannon->Gauge;
+        player->SetVelocity();
         player->IsFire = true;
         player->gravity = 10.0f;
         Camera::main = (Camera*)player->Find("BackCam");
@@ -126,26 +128,28 @@ void Scene2::Update()
     {
         player->visible = false;
         player->SetPlayerWorldPos(cannon->Find("Cannon")->GetWorldPos());
-        player->SetPlayerRotationX(-(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN)));
+        player->SetPlayerRotationX(-(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN)));      
     }
 
+
+ 
     // 플레이어 이동
-    player->MovePlayer(player->scalar, cannon->Direction);
+  
 
     // 플레이어 발사 후 회전
-    if (player->IsFire)
-    {
-        Vector3 velocity
-            = (cannon->Direction * player->scalar) - (UP * player->gravity);
+    //if (player->IsFire)
+    //{
+    //    Vector3 velocity
+    //        = (cannon->Direction * player->scalar) - (UP * player->gravity);
 
-        player->Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
-        for (int i = 0; i < 4; i++)
-        {
-            player->Ani[i]->Find("HoleBone")->rotation.x = player->Find("HoleBone")->rotation.x;
-        }
+    //    player->Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
+    //    for (int i = 0; i < 4; i++)
+    //    {
+    //        player->Ani[i]->Find("HoleBone")->rotation.x = player->Find("HoleBone")->rotation.x;
+    //    }
 
-       // cout << player->Find("HoleBone")->rotation.x << endl;
-    }
+    //   // cout << player->Find("HoleBone")->rotation.x << endl;
+    //}
 
     // 추후 충돌시 애니메이션 변경용
     if (INPUT->KeyDown('1'))

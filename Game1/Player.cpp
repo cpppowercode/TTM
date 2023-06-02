@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Cannon.h"
 #include "Player.h"
 
 Player* Player::Create(string name)
@@ -43,15 +44,20 @@ void Player::Release()
 	delete this;
 }
 
-void Player::MovePlayer(float scalar, Vector3 seta)
+void Player::SetVelocity()
+{
+	velocity = (cannon->Direction * scalar) - (UP * gravity);
+}
+
+void Player::MovePlayer()
 {
 	// ZY 평면에서의 벡터값에 중력 뺀 방향으로 이동시키는 함수인데 의미가 있나...?
 	if (IsFire)
 	{
-		Find(root->name)->MoveWorldPos(((seta * scalar) - (UP * gravity)) * BoosterScalar * DELTA);
+		Find(root->name)->MoveWorldPos((velocity) * BoosterScalar * DELTA);
 		for (int i = 0; i < 4; i++)
 		{
-			Ani[i]->MoveWorldPos(((seta * scalar) - (UP * gravity)) * BoosterScalar * DELTA);
+			Ani[i]->MoveWorldPos((velocity) * BoosterScalar * DELTA);
 		}
 		gravity += 10 * DELTA;
 	}
@@ -100,6 +106,7 @@ void Player::ChangeAni()
 		dest++;
 	}	
 }
+
 
 Vector3 Player::GetPlayerWorldPos()
 {
@@ -174,6 +181,20 @@ void Player::Update()
 			src = dest;
 		}
 	}
+
+	if (IsFire)
+	{
+		MovePlayer();
+		SetVelocity();
+		Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
+		for (int i = 0; i < 4; i++)
+		{
+			Ani[i]->Find("HoleBone")->rotation.x = Find("HoleBone")->rotation.x;
+		}
+
+		 cout << Find("HoleBone")->rotation.x << endl;
+	}
+
 	Actor::Update();
 }
 
