@@ -4,6 +4,8 @@ class MainUI : public Actor
 public:
     static MainUI* Create(string name = "MainUI");
 	class Player* player;
+	class Cannon* cannon;
+
 	bool Option;
 
 	UI* open;

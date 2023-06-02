@@ -3,7 +3,7 @@
     <Shader File="1.UI.hlsl"/>
     <Transform>
         <Position X="-0.97000003" Y="0.37" Z="0"/>
-        <Scale X="0.1" Y="0.1" Z="1"/>
+        <Scale X="0.07" Y="0.07" Z="1"/>
         <Rotation X="0" Y="0" Z="0"/>
     </Transform>
     <UI PivotX="0.5" PivotY="-0.5"/>

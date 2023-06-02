@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MainUI.h"
+#include "Cannon.h"
 #include "Player.h"
+
 
 MainUI* MainUI::Create(string name)
 {
@@ -116,7 +118,7 @@ void MainUI::Update()
 
         if (booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            player->scalar += 200.0f;
+            cannon->Gauge += 2000.0f;
             booster->Find("boosterON")->visible = false;
         }
 
@@ -139,7 +141,7 @@ void MainUI::Update()
 
         if (bomb->Find("bombON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            App.deltaScale = 1.0f;
+            player->scalar += 200.0f;
             bomb->Find("bombON")->visible = false;
         }
 
@@ -161,7 +163,6 @@ void MainUI::Update()
 
         if (reload->Find("reloadON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            App.deltaScale = 0.0f;
             reload->Find("reloadON")->visible = false;
         }
     }
@@ -222,10 +223,11 @@ void MainUI::Update()
         retry->Find("retry")->scale.x = RANDOM->Float(1.0f, 1.05f);
         retry->Find("retry")->scale.y = RANDOM->Float(1.0f, 1.05f);
 
-        /*if (retry->Find("retry")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        if (retry->Find("retry")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-
-        }*/
+            App.deltaScale = 1.0f;
+            SCENE->ChangeScene("SC2")->Init();
+        }
     }
     else
     {
