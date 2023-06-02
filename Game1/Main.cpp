@@ -57,10 +57,6 @@ void Main::Init()
      
         trans = ob->FirstChildElement("Transform");
         Pos = trans->FirstChildElement("Position");
-     
-        cout << ob->Attribute("name") << endl;
-        cout << Pos->FloatAttribute("X") << endl;
-        cout << Pos->FloatAttribute("Y") << endl;
 
         //ob = ob->FirstChildElement();
 

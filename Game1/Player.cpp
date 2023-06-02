@@ -191,8 +191,6 @@ void Player::Update()
 		{
 			Ani[i]->Find("HoleBone")->rotation.x = Find("HoleBone")->rotation.x;
 		}
-
-		 cout << Find("HoleBone")->rotation.x << endl;
 	}
 
 	Actor::Update();

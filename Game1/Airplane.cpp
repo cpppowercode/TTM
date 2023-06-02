@@ -61,15 +61,7 @@ void Airplane::LateUpdate()
 {
 	if (Intersect(player))
 	{
-		if (GetWorldPos().y > player->GetWorldPos().y)
-		{
-
-		}
-
-		if (GetWorldPos().y < player->GetWorldPos().y)
-		{
-
-		}
+		player->velocity.y = -player->velocity.y;
 	}
 }
 

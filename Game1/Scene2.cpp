@@ -56,7 +56,6 @@ void Scene2::Release()
 
 void Scene2::Update()
 {
-    cout << player->scalar << endl;
     Camera::main->width = App.GetWidth();
     Camera::main->height = App.GetHeight();
     Camera::main->viewport.width = App.GetWidth();
@@ -131,67 +130,12 @@ void Scene2::Update()
         player->SetPlayerRotationX(-(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN)));      
     }
 
-
- 
-    // 플레이어 이동
-  
-
-    // 플레이어 발사 후 회전
-    //if (player->IsFire)
-    //{
-    //    Vector3 velocity
-    //        = (cannon->Direction * player->scalar) - (UP * player->gravity);
-
-    //    player->Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
-    //    for (int i = 0; i < 4; i++)
-    //    {
-    //        player->Ani[i]->Find("HoleBone")->rotation.x = player->Find("HoleBone")->rotation.x;
-    //    }
-
-    //   // cout << player->Find("HoleBone")->rotation.x << endl;
-    //}
-
     // 추후 충돌시 애니메이션 변경용
     if (INPUT->KeyDown('1'))
     {
         player->ChangeAni();
     }
-    // 밑의 주석은 애니메이션 변경 실험용임. 
-    //if (INPUT->KeyDown('1'))
-    //{
-    //    player->dest = 1;
-    //    player->t = 0.0f;
-    //}
-    //if (INPUT->KeyDown('2'))
-    //{
-    //    player->dest = 2;
-    //    player->t = 0.0f;
-    //}
-    //if (INPUT->KeyDown('3'))
-    //{
-    //    player->dest = 3;
-    //    player->t = 0.0f;
-    //}
-    //if (INPUT->KeyDown('0'))
-    //{
-    //    player->dest = 0;
-    //    player->t = 0.0f;
-    //}
 
-    //if (player->t < 1.0f)
-    //{
-    //    //
-    //    player->Animation(player->Find(player->root->name));
-
-
-
-    //    player->t += DELTA;
-    //    if (player->t >= 1.0f)
-    //    {
-    //        player->t = 1.0f;
-    //        player->src = player->dest;
-    //    }
-    //}
 
     ImGui::End();
    
@@ -210,7 +154,10 @@ void Scene2::Update()
 
 void Scene2::LateUpdate()
 {
-   
+    for (Airplane* airplane : airplanes)
+    {
+        airplane->LateUpdate();
+    }
 }
 
 void Scene2::Render()
