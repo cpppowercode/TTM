@@ -2,7 +2,7 @@
 #include "Airplane.h"
 #include "ObjectPool.h"
 
-#define INITIAL_POOL_SIZE 50
+#define INITIAL_POOL_SIZE 100
 
 vector<Airplane*> ObjectPool::AirplaneCreate(string name)
 {

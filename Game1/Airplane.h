@@ -12,5 +12,6 @@ private:
 public:
     void	Update() override;
     void	Release() override;
+    void    Reset();
 };
 

@@ -11,10 +11,13 @@ Airplane* Airplane::Create(string name)
 	airPlane->player = Player::Create();
 	airPlane->name = name;
 
+	float randomSeed = Camera::main->farZ / 10.0f;
 
-	float tempX = RANDOM->Float(-500.0f, 500.0f);
-	float tempY = RANDOM->Float(-500.0f, 500.0f);
-	float tempZ = RANDOM->Float(20.0f, 500.0f);
+	cout << randomSeed << endl;
+
+	float tempX = RANDOM->Float(-randomSeed, randomSeed);
+	float tempY = RANDOM->Float(-randomSeed, randomSeed);
+	float tempZ = RANDOM->Float(20.0f, randomSeed);
 
 	bool Opposite = RANDOM->Int(0, 1);
 
@@ -50,6 +53,11 @@ void Airplane::Update()
 	MoveWorldPos(-GetRight() * DELTA * 50);
 
 
+	if (GetWorldPos().z - player->GetWorldPos().z < Camera::main->nearZ)
+	{
+		Reset();
+	}
+
 	Actor::Update();
 }
 
@@ -60,4 +68,23 @@ void Airplane::Release()
 		SafeRelease(it->second);
 	}
 	delete this;
+}
+
+void Airplane::Reset()
+{
+	float randomSeed = Camera::main->farZ / 10.0f;
+
+	float tempX = RANDOM->Float(-500, 500);
+	float tempY = RANDOM->Float(-500, 500);
+	float tempZ = RANDOM->Float(20.0f, 500);
+	
+	//bool Opposite = RANDOM->Int(0, 1);
+	
+	Vector3 tempPos = player->GetWorldPos() +
+		Vector3(tempX, tempY, tempZ);
+	
+	SetWorldPos(tempPos);
+	
+	if (tempPos.y < 0) SetWorldPos(tempPos + Vector3(0, 500, 0));
+	 //if (Opposite) rotation.y = 180 * TORADIAN;
 }
