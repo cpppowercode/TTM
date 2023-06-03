@@ -31,7 +31,7 @@ void Scene2::Init()
 
     //Cannon 생성
     cannon = Cannon::Create();
-    cannon->LoadFile("cannon.xml");
+    cannon->LoadFile("Cannon1.xml");
     /////////////////////////////////
     mainUI->cannon = cannon;
     player->cannon = cannon;
@@ -127,8 +127,8 @@ void Scene2::Update()
     if (player->IsFire == false)
     {
         player->visible = false;
-        player->SetPlayerWorldPos(cannon->Find("Cannon")->GetWorldPos());
-        player->SetPlayerRotationX(-(cannon->Find("Cannon")->rotation.x + (90 * TORADIAN)));      
+        player->SetPlayerWorldPos(cannon->Find("cannonJoint")->GetWorldPos());
+        player->SetPlayerRotationX(-(cannon->Find("cannonJoint")->rotation.x + (90 * TORADIAN)));      
     }
 
     // 추후 충돌시 애니메이션 변경용

@@ -38,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameObject", "GameObject", 
 		Contents\GameObject\BulletUI5.xml = Contents\GameObject\BulletUI5.xml
 		Contents\GameObject\Cam.xml = Contents\GameObject\Cam.xml
 		Contents\GameObject\cannon.xml = Contents\GameObject\cannon.xml
+		..\..\..\바탕 화면\Cannon1.xml = ..\..\..\바탕 화면\Cannon1.xml
 		Contents\GameObject\ContinueUI.xml = Contents\GameObject\ContinueUI.xml
 		Contents\GameObject\GaugeBackUI.xml = Contents\GameObject\GaugeBackUI.xml
 		Contents\GameObject\GaugeFrontUI.xml = Contents\GameObject\GaugeFrontUI.xml
