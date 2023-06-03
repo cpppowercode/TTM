@@ -36,6 +36,7 @@ void Scene2::Init()
     cannon->mainUI = mainUI;
 
     airplanes = ObjectPool::AirplaneCreate();
+    malphites = ObjectPool::MalphiteCreate();
 
     for (Airplane* airplane : airplanes)
         airplane->player = player;
@@ -78,7 +79,8 @@ void Scene2::Update()
     
     for (Airplane* airplane: airplanes)
         airplane->RenderHierarchy();
-
+    for (Malphite* malphite : malphites)
+        malphite->RenderHierarchy();
 
     // 플레이어 날리기 실험용 추가본
 

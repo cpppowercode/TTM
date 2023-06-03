@@ -7,6 +7,7 @@ public:
     static Airplane* Create(string name = "Airplane");
     class Player* player;
     bool isInUse;
+    bool Opposite;
 private:
     Airplane();
     virtual ~Airplane();

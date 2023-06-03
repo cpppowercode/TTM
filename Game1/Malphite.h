@@ -8,6 +8,7 @@ public:
     static Malphite* Create(string name = "Airplane");
     class Player* player;
     bool isInUse;
+    bool Opposite;
 private:
     Malphite();
     virtual ~Malphite();
