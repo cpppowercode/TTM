@@ -1,14 +1,14 @@
 #include "stdafx.h"
-#include "Airplane.h"
 #include "ObjectPool.h"
 
-#define INITIAL_POOL_SIZE 100
+#define AIRPLANE_INITIAL_POOL_SIZE 100
+#define MALPHITE_INITIAL_POOL_SIZE 30
 
 vector<Airplane*> ObjectPool::AirplaneCreate(string name)
 {
     Airplane* airPlane;
     vector<Airplane*> airplanePool;
-    for (int i = 0; i < INITIAL_POOL_SIZE; i++)
+    for (int i = 0; i < AIRPLANE_INITIAL_POOL_SIZE; i++)
     {
         string name = "airplane";
         name += to_string(i);
@@ -17,6 +17,21 @@ vector<Airplane*> ObjectPool::AirplaneCreate(string name)
     }
 
     return airplanePool;
+}
+
+vector<Malphite*> ObjectPool::MalphiteCreate(string name)
+{
+    Malphite* malphite;
+    vector<Malphite*> malphitePool;
+    for (int i = 0; i < MALPHITE_INITIAL_POOL_SIZE; i++)
+    {
+        string name = "malphite";
+        name += to_string(i);
+        malphite = Malphite::Create(name);
+        malphitePool.push_back(malphite);
+    }
+
+    return malphitePool;
 }
 
 ObjectPool::ObjectPool()
@@ -33,7 +48,7 @@ Airplane* ObjectPool::GetAirplane()
     {
         if (!airPlane->isInUse)
         {
-            // airPlane->Reset();
+            airPlane->Reset();
             return airPlane;
         }
     }
@@ -43,14 +58,22 @@ Airplane* ObjectPool::GetAirplane()
     return newAirplane;
 }
 
+Malphite* ObjectPool::GetMalphite()
+{
+    for (Malphite* malphite : malphitePool)
+    {
+        if (!malphite->isInUse)
+        {
+            malphite->Reset();
+            return malphite;
+        }
+    }
+
+    Malphite* newMalphite = Malphite::Create();
+    malphitePool.push_back(newMalphite);
+    return newMalphite;
+}
+
 void ObjectPool::Release()
 {
-    //for (Airplane* airplane : airplanePool)
-    //{
-    //    airplane->isInUse = false;
-    //    // airplane->Reset();
-    //
-    //    airPlane->Release();
-    //}
-    //airplanePool.clear();
 }

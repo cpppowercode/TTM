@@ -38,10 +38,10 @@ void Scene2::Init()
     airplanes = ObjectPool::AirplaneCreate();
 
     for (Airplane* airplane : airplanes)
-    {
-        //airplane->LoadFile("Airplane.xml");
         airplane->player = player;
-    }
+
+    for (Malphite* malphite : malphites)
+        malphite->player = player;
 
     
     grid =  Grid::Create();
@@ -100,12 +100,6 @@ void Scene2::Update()
         cannon->dissipation();
     }
 
-    // 추후 충돌시 애니메이션 변경용
-    if (INPUT->KeyDown('1'))
-    {
-        player->ChangeAni();
-    }
-
 
     ImGui::End();
    
@@ -119,15 +113,16 @@ void Scene2::Update()
 
     for (Airplane* airplane : airplanes)
         airplane->Update();
-
+    for (Malphite* malphite : malphites)
+        malphite->Update();
 }
 
 void Scene2::LateUpdate()
 {
     for (Airplane* airplane : airplanes)
-    {
         airplane->LateUpdate();
-    }
+    for (Malphite* malphite : malphites)
+        malphite->LateUpdate();
 }
 
 void Scene2::Render()
@@ -139,9 +134,10 @@ void Scene2::Render()
     
     for (Airplane* airplane : airplanes)
         airplane->Render();
-    cannon->Render();
+    for (Malphite* malphite : malphites)
+        malphite->Render();
 
-    //////////////////
+    cannon->Render();
     mainUI->Render();
 }
 

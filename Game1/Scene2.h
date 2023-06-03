@@ -19,6 +19,7 @@ private:
 
 
 	vector<Airplane*> airplanes;
+	vector<Malphite*> malphites;
 public:
 	Scene2();
 	~Scene2();
