@@ -35,6 +35,7 @@ Player* Player::Create(string name)
 	player->src = 0;
 	player->dest = 0;
 	player->t = 1.0f;
+	player->ChangeVel = Vector3(0.0f, 0.0f, 0.0f) * PI * 0.25f;
 	return player;
 }
 
@@ -50,7 +51,9 @@ void Player::Release()
 void Player::SetVelocity()
 {
 	//Vector3 Direction = Vector3(cannon->Direction.x * scalar, cannon->Direction.y * scalar , cannon->Direction.z *scalar);
-	velocity = (cannon->Direction * scalar) - (UP * gravity);
+	velocity = ((cannon->Direction + (ChangeVel)) * scalar) - (UP * gravity);
+	velocity.Normalize(velocityNormalize);
+	velocityScalar = velocity.Length();
 }
 
 void Player::MovePlayer()
@@ -197,7 +200,24 @@ void Player::Update()
 		{
 			Ani[i]->Find("HoleBone")->rotation.x = Find("HoleBone")->rotation.x;
 		}
+
+
+		if (INPUT->KeyPress(VK_RIGHT))
+		{
+			ChangeVel = GetRight() * PI * 0.25f;
+		}
+
+		if (INPUT->KeyPress(VK_LEFT))
+		{
+			ChangeVel = -GetRight() * PI * 0.25f;
+		}
+
+		if (INPUT->KeyUp(VK_RIGHT) || INPUT->KeyUp(VK_LEFT))
+		{
+			ChangeVel = Vector3(0.0f, 0.0f, 0.0f) * PI * 0.25f;
+		}
 	}
+
 
 	Actor::Update();
 }

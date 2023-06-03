@@ -9,8 +9,6 @@ public:
     // player's move velocity scalar
     float   scalar;
     // player's move velocity rotation seta
-    // 근데 이거 seta 값을 ToRadian 해야하나 말아야하나 모름
-    Vector3   seta;
     float   gravity;
 
     //아이템 사용시 증가량.
@@ -22,7 +20,14 @@ public:
 
     bool IsFire;
 
+    // 속도, 방향, 크기
     Vector3 velocity;
+    Vector3 velocityNormalize;
+    float   velocityScalar;
+
+    // 좌우키 눌렀을때 변하는 방향값
+    Vector3 ChangeVel;
+
     class Cannon* cannon;
 
 public:
@@ -42,9 +47,8 @@ public:
     float   GetPlayerRotationY();
     float   GetPlayerRotationZ();
 
-    // player's scalar and shooting rotation seta setting
+    // player's scalar setting
     void    SetScalar(float scalar) { this->scalar = scalar; }
-    void    SetSeta(Vector3 seta) { this->seta = seta; }
 
     // player's gravity get, set
     void    SetGravity(float gravity) { this->gravity = gravity; }
