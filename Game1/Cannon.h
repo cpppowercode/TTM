@@ -6,8 +6,10 @@ public:
 
     //변수는 추후 calculate클래스로 이동해야함
     //대포 각도 값
+
+    class MainUI* mainUI;
+    class Player* player;
     Vector3 Direction;
-    //대포 게이지
     float Gauge;
 private:
     Cannon();
@@ -17,5 +19,9 @@ private:
 public:
     void	Update() override;
     void	Release() override;
+    
+    void    cannonCharge();
+    void    cannonShot();
+    void    dissipation();
 };
 

@@ -49,6 +49,7 @@ void Player::Release()
 
 void Player::SetVelocity()
 {
+	//Vector3 Direction = Vector3(cannon->Direction.x * scalar, cannon->Direction.y * scalar , cannon->Direction.z *scalar);
 	velocity = (cannon->Direction * scalar) - (UP * gravity);
 }
 

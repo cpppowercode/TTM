@@ -35,7 +35,7 @@
         <Transform>
             <Position X="0" Y="0" Z="0"/>
             <Scale X="1" Y="1" Z="1"/>
-            <Rotation X="0" Y="0" Z="0"/>
+            <Rotation X="-0.18803763" Y="0" Z="0"/>
         </Transform>
         <Children Size="1"/>
         <Child0 Name="GunBarrel" Visible="false" ObType="0">
@@ -47,7 +47,7 @@
                 <Scale X="1.5" Y="1.5" Z="10"/>
                 <Rotation X="0" Y="0" Z="0"/>
             </Transform>
-            <Children Size="4"/>
+            <Children Size="5"/>
             <Child0 Name="part 1" Visible="true" ObType="0">
                 <Mesh File="NDC.mesh"/>
                 <Shader File="6.Cube.hlsl"/>
@@ -92,6 +92,14 @@
                 </Transform>
                 <Children Size="0"/>
             </Child3>
+            <Child4 Name="playerpoint" Visible="true" ObType="0">
+                <Transform>
+                    <Position X="0" Y="0" Z="0.90000004"/>
+                    <Scale X="1" Y="1" Z="1"/>
+                    <Rotation X="0" Y="0" Z="0"/>
+                </Transform>
+                <Children Size="0"/>
+            </Child4>
         </Child0>
     </Child2>
 </Root>
