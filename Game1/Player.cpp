@@ -29,12 +29,14 @@ Player* Player::Create(string name)
 	
   
 	player->IsFire = false;
+	player->IsChange = false;
 	player->gravity = 0.0f;
 	player->scalar = 0.0f;
 	player->BoosterScalar = 1.0f;
 	player->src = 0;
 	player->dest = 0;
 	player->t = 1.0f;
+	player->rt = 1.0f;
 	player->ChangeVel = Vector3(0.0f, 0.0f, 0.0f) * PI * 0.25f;
 	return player;
 }
@@ -205,16 +207,46 @@ void Player::Update()
 		if (INPUT->KeyPress(VK_RIGHT))
 		{
 			ChangeVel = GetRight() * PI * 0.25f;
+			float rot = Find("HoleBone")->rotation.z;
+			if (rot < PI * 0.25f)
+			{
+				Find("HoleBone")->rotation.z += PI * 0.25f * DELTA;
+			}
+			rt = 0;
+			IsChange = true;
 		}
 
 		if (INPUT->KeyPress(VK_LEFT))
 		{
 			ChangeVel = -GetRight() * PI * 0.25f;
+			float rot = Find("HoleBone")->rotation.z;
+			if (rot > -PI * 0.25f)
+			{
+				Find("HoleBone")->rotation.z -= PI * 0.25f * DELTA;
+			}
+			rt = 0;
+			IsChange = true;
 		}
 
 		if (INPUT->KeyUp(VK_RIGHT) || INPUT->KeyUp(VK_LEFT))
 		{
 			ChangeVel = Vector3(0.0f, 0.0f, 0.0f) * PI * 0.25f;
+			IsChange = false;
+		}
+
+		if (!IsChange)
+		{
+			if (rt < 1.0f)
+			{
+
+				Find("HoleBone")->rotation.z = Util::Lerp(Find("HoleBone")->rotation.z, 0.0f, rt);
+
+				rt += DELTA;
+				if (rt >= 1.0f)
+				{
+					rt = 1.0f;
+				}
+			}		
 		}
 	}
 

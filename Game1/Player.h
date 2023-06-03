@@ -27,6 +27,8 @@ public:
 
     // 좌우키 눌렀을때 변하는 방향값
     Vector3 ChangeVel;
+    bool IsChange;
+    float rt = 0.0f;
 
     class Cannon* cannon;
 
