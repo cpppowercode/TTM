@@ -83,7 +83,28 @@ void Scene2::Update()
     // 캐논 게이지 추가
     if (mainUI->botton->Find("playbotton")->visible == false && INPUT->KeyPress(VK_SPACE))
     {
+<<<<<<< Updated upstream
         cannon->cannonCharge();
+=======
+        mainUI->gaugefront->Find("GaugeFront")->scale.y = Util::Saturate(mainUI->gaugefront->Find("GaugeFront")->scale.y, 0.0f, 0.77f);
+        if (mainUI->gaugefront->Find("GaugeFront")->scale.y == 0.77f)
+        {
+            mainUI->gaugefront->Find("GaugeFront")->scale.y = 0.0f;
+        }
+        else if (mainUI->gaugefront->Find("GaugeFront")->scale.y < 0.4f)
+        {
+            mainUI->gaugefront->Find("GaugeFront")->scale.y += 0.5f * DELTA;
+        }
+        else if (mainUI->gaugefront->Find("GaugeFront")->scale.y > 0.4f)
+        {
+            mainUI->gaugefront->Find("GaugeFront")->scale.y += 3.0f * DELTA;
+        }
+        else if (mainUI->gaugefront->Find("GaugeFront")->scale.y > 0.68f)
+        {
+            mainUI->gaugefront->Find("GaugeFront")->scale.y += 7.0f * DELTA;
+        }
+        cannon->Gauge += (mainUI->gaugefront->Find("GaugeFront")->scale.y * 300.0f) * DELTA;
+>>>>>>> Stashed changes
     }
 
     // 캐논 발사되는 순간
@@ -116,6 +137,8 @@ void Scene2::Update()
 
 void Scene2::LateUpdate()
 {
+    mainUI->LateUpdate();
+
     for (Airplane* airplane : airplanes)
         airplane->LateUpdate();
     for (Malphite* malphite : malphites)

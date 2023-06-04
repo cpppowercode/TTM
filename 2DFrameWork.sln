@@ -45,6 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameObject", "GameObject", 
 		Contents\GameObject\GaugeUI.xml = Contents\GameObject\GaugeUI.xml
 		Contents\GameObject\GunUI.xml = Contents\GameObject\GunUI.xml
 		Contents\GameObject\Human.xml = Contents\GameObject\Human.xml
+		Contents\GameObject\MouseUI.xml = Contents\GameObject\MouseUI.xml
 		Contents\GameObject\OpenBottonUI.xml = Contents\GameObject\OpenBottonUI.xml
 		Contents\GameObject\OpenUI.xml = Contents\GameObject\OpenUI.xml
 		Contents\GameObject\OptionUI.xml = Contents\GameObject\OptionUI.xml

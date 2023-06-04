@@ -6,7 +6,14 @@ public:
 	class Player* player;
 	class Cannon* cannon;
 
+	Actor* plane;
+	Actor* plane2;
+
+	int count;
+	float time;
+	float time2;
 	bool Option;
+	bool Booster;
 
 	UI* open;
 	UI* botton;
@@ -26,6 +33,7 @@ public:
 	UI* gauge;
 	UI* gaugefront;
 	UI* gaugeback;
+	UI* mouse;
 
     MainUI();
     virtual ~MainUI();
@@ -34,6 +42,7 @@ public:
     void Get() {}
 public:
     void	Update() override;
+	void	LateUpdate();
     void	Render() override;
     void	Release() override;
 	void	Hierarchy();

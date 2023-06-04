@@ -66,7 +66,20 @@ MainUI* MainUI::Create(string name)
     mainui->gaugeback = UI::Create();
     mainui->gaugeback->LoadFile("GaugeBackUI.xml");
 
+    mainui->mouse = UI::Create();
+    mainui->mouse->LoadFile("MouseUI.xml");
+
+    mainui->plane = Actor::Create();
+    mainui->plane->LoadFile("plane.xml");
+
+    mainui->plane2 = Actor::Create();
+    mainui->plane2->LoadFile("plane2.xml");
+
     mainui->Option = false;
+    mainui->Booster = false;
+    mainui->time = 0.0f;
+    mainui->time2 = 0.0f;
+    mainui->count = 6;
 
 	return mainui;
 }
@@ -91,6 +104,9 @@ MainUI::~MainUI()
 
 void MainUI::Update()
 {
+    //UI 마우스
+    mouse->Find("Mouse")->SetWorldPosX(INPUT->NDCPosition.x + 0.01f);
+    mouse->Find("Mouse")->SetWorldPosY(INPUT->NDCPosition.y - 0.08f);
 
     //UI 시작화면
     if (botton->MouseOver())
@@ -109,17 +125,17 @@ void MainUI::Update()
         botton->Find("playbotton")->scale.x = 1.1f;
         botton->Find("playbotton")->scale.y = 1.0f;
     }
+   // cout << player->BoosterScalar << endl;
     //UI 1번버튼 부스터
     if (booster->MouseOver())
     {
         booster->Find("boosterON")->scale.x = RANDOM->Float(2.0f, 2.2f);
         booster->Find("boosterON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
-
-        if (booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        if (player->IsFire == true && Booster == false && booster->Find("boosterON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            player->BoosterScalar *= 20.0f;
-            booster->Find("boosterON")->visible = false;
+            Booster = true;
+            player->BoosterScalar *= 3.5f;
         }
 
     }
@@ -132,16 +148,16 @@ void MainUI::Update()
             booster->Find("boosterOFF")->visible = true;
         }
     }
+    //cout << player->scalar << endl;
     //UI 2번버튼 폭탄
     if (bomb->MouseOver())
     {
         bomb->Find("bombON")->scale.x = RANDOM->Float(2.0f, 2.2f);
         bomb->Find("bombON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
-
-        if (bomb->Find("bombON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        if (player->IsFire == true && bomb->Find("bombON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
-            player->scalar += 200.0f;
+            player->scalar *= 2.5f;
             bomb->Find("bombON")->visible = false;
         }
 
@@ -161,8 +177,14 @@ void MainUI::Update()
         reload->Find("reloadON")->scale.x = RANDOM->Float(2.0f, 2.2f);
         reload->Find("reloadON")->scale.y = RANDOM->Float(2.6f, 2.8f);
 
-        if (reload->Find("reloadON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
+        if (player->IsFire == true && reload->Find("reloadON")->visible == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            count = 6;
+            bullet->Find("bulletON")->visible = true;
+            bullet2->Find("bulletON")->visible = true;
+            bullet3->Find("bulletON")->visible = true;
+            bullet4->Find("bulletON")->visible = true;
+            bullet5->Find("bulletON")->visible = true;
             reload->Find("reloadON")->visible = false;
         }
     }
@@ -234,6 +256,28 @@ void MainUI::Update()
         retry->Find("retry")->scale.x = 1.0f;
         retry->Find("retry")->scale.y = 1.0f;
     }
+    //UI Bullte
+    if (count == 5)
+    {
+        bullet5->Find("bulletON")->visible = false;
+    }
+    if (count == 4)
+    {
+        bullet4->Find("bulletON")->visible = false;
+    }
+    if (count == 3)
+    {
+        bullet3->Find("bulletON")->visible = false;
+    }
+    if (count == 2)
+    {
+        bullet2->Find("bulletON")->visible = false;
+    }
+    if (count == 1)
+    {
+        bullet->Find("bulletON")->visible = false;
+    }
+
 
 
     if (Option == true)
@@ -248,7 +292,18 @@ void MainUI::Update()
             retry->Find("retry")->visible = true;
         }
     }
+    if (Booster == true)
+    {
+        if (TIMER->GetTick(time, 4.0f))
+        {
+            Booster = false;
+            booster->Find("boosterON")->visible = false;
+            player->BoosterScalar = 1.0f;
+        }
+    }
     
+
+
     //UI
     open->Update();
     botton->Update();
@@ -268,13 +323,47 @@ void MainUI::Update()
     option->Update();
     continueUI->Update();
     retry->Update();
+    mouse->Update();
+    plane->Update();
+    plane2->Update();
 
 	Actor::Update();
+}
+
+void MainUI::LateUpdate()
+{
+    Ray CamForward;
+    CamForward = Util::MouseToRay(INPUT->position, Camera::main);
+
+
+
+    Vector3 hit;
+    if (player->Find("Body")->Intersect(CamForward, hit))
+    {
+        if (count > 1 && player->IsFire == true && INPUT->KeyDown(VK_LBUTTON))
+        {
+            count--;
+            player->scalar += 50.0f;
+        }
+    }
+    if (player->IsFire == true)
+    {
+        player->scalar -= 1.0f * DELTA;
+
+        if (TIMER->GetTick(time2, 0.5f))
+        {
+            plane->SetWorldPosZ(player->GetWorldPos().z);
+            plane2->SetWorldPosZ(player->GetWorldPos().z + 100.0f);
+        }
+    }
+   
 }
 
 void MainUI::Render()
 {
     //UI
+    plane->Render();
+    plane2->Render();
     booster->Render();
     bomb->Render();
     reload->Render();
@@ -293,6 +382,8 @@ void MainUI::Render()
     retry->Render();
     open->Render();
     botton->Render();
+    mouse->Render();
+   
 
 }
 
@@ -317,4 +408,7 @@ void MainUI::Hierarchy()
     gauge->RenderHierarchy();
     gaugefront->RenderHierarchy();
     gaugeback->RenderHierarchy();
+    mouse->RenderHierarchy();
+    plane->RenderHierarchy();
+    plane2->RenderHierarchy();
 }
