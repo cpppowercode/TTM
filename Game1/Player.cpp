@@ -68,7 +68,7 @@ void Player::MovePlayer()
 		{
 			Ani[i]->MoveWorldPos((velocity) * BoosterScalar * DELTA);
 		}
-		gravity += 10 * DELTA;
+		gravity += 10.0f * DELTA;
 	}
 }
 
@@ -197,8 +197,24 @@ void Player::Update()
 	{
 		MovePlayer();
 		SetVelocity();
-		Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
+		Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN) + ChangeWS);
 		
+		if (INPUT->KeyPress(VK_UP))
+		{
+			if (ChangeWS < PI * 0.25f)
+			{
+				ChangeWS += PI * 0.25f * DELTA;
+			}
+		}
+
+		if (INPUT->KeyPress(VK_DOWN))
+		{
+			if (ChangeWS > -PI * 0.25f)
+			{
+				ChangeWS -= PI * 0.25f * DELTA;
+			}
+		}
+
 		if (INPUT->KeyPress(VK_RIGHT))
 		{
 			ChangeVel = GetRight() * PI * 0.25f;
@@ -249,9 +265,14 @@ void Player::Update()
 				}
 			}		
 		}
+
+		if (gravity > 50.0f)
+		{
+			gravity = 50.0f;
+		}
 	}
 
-
+	cout << "gravity : " << gravity << endl;
 	Actor::Update();
 }
 
