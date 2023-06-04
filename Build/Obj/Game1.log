@@ -4,6 +4,7 @@
   Cannon.cpp
   Main.cpp
   MainUI.cpp
+<<<<<<< Updated upstream
   Malphite.cpp
   ObjectPool.cpp
   Player.cpp
@@ -12,3 +13,8 @@ C:\Users\bin66\OneDrive\문서\GitHub\TTM\Game1\Cannon.cpp(36,52): warning C4244
 C:\Users\bin66\OneDrive\문서\GitHub\TTM\Game1\Cannon.cpp(44,51): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
      C:\Users\bin66\OneDrive\문서\GitHub\TTM\\Build\Game1.lib 라이브러리 및 C:\Users\bin66\OneDrive\문서\GitHub\TTM\\Build\Game1.exp 개체를 생성하고 있습니다.
   Game1.vcxproj -> C:\Users\bin66\OneDrive\문서\GitHub\TTM\Build\Game1.exe
+=======
+C:\Users\jsmj1\Documents\GitHub\TTM\Game1\MainUI.cpp(496,11): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     C:\Users\jsmj1\Documents\GitHub\TTM\\Build\Game1.lib 라이브러리 및 C:\Users\jsmj1\Documents\GitHub\TTM\\Build\Game1.exp 개체를 생성하고 있습니다.
+  Game1.vcxproj -> C:\Users\jsmj1\Documents\GitHub\TTM\Build\Game1.exe
+>>>>>>> Stashed changes

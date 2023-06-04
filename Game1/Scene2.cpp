@@ -22,7 +22,10 @@ void Scene2::Init()
     Cam->viewport.height = App.GetHeight();
     
     player = Player::Create();
-   
+
+    //UI에서 캐논받기 위해서 한번더 불러옴
+    cannon = Cannon::Create();
+
     mainUI = MainUI::Create();
     mainUI->player = player;
     mainUI->cannon = cannon;

@@ -1,10 +1,40 @@
 #pragma once
+struct Long4
+{
+	long a;
+	long b;
+	long c;
+	long d;
+
+	Long4() {};
+
+	Long4(long a, long b, long c, long d)
+	{
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+	}
+
+	Long4 operator =(Long4 a)
+	{
+		this->a = a.a;
+		this->b = a.b;
+		this->c = a.c;
+		this->d = a.d;
+
+		return *this;
+	}
+};
 class MainUI : public Actor
 {
 public:
     static MainUI* Create(string name = "MainUI");
 	class Player* player;
 	class Cannon* cannon;
+
+	//int a[4];
+	
 
 	Actor* plane;
 	Actor* plane2;
@@ -46,6 +76,7 @@ public:
 	UI* gaugefront;
 	UI* gaugeback;
 	UI* mouse;
+	UI* bell;
 
     MainUI();
     virtual ~MainUI();

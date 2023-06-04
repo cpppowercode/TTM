@@ -57,6 +57,9 @@ MainUI* MainUI::Create(string name)
     mainui->retry->LoadFile("RetryUI.xml");
 
     //Gauge UI
+    mainui->bell = UI::Create();
+    mainui->bell->LoadFile("BellUI.xml");
+
     mainui->gauge = UI::Create();
     mainui->gauge->LoadFile("GaugeUI.xml");
 
@@ -69,6 +72,7 @@ MainUI* MainUI::Create(string name)
     mainui->mouse = UI::Create();
     mainui->mouse->LoadFile("MouseUI.xml");
 
+    //¹Ù´Ú, ¹è°æ
     mainui->plane = Actor::Create();
     mainui->plane->LoadFile("plane.xml");
     mainui->plane2 = Actor::Create();
@@ -310,7 +314,16 @@ void MainUI::Update()
         bullet->Find("bulletON")->visible = false;
     }
 
-
+    if (botton->Find("playbotton")->visible == false && INPUT->KeyPress(VK_SPACE))
+    {
+        //bell->Find("bell")->rotation.z = Util::Saturate(bell->Find("bell")->rotation.z, -0.5f, 0.5f);
+        bell->Find("bell")->rotation.z = RANDOM->Float(-0.5f, 0.5f);
+        
+    }
+    if (botton->Find("playbotton")->visible == false && INPUT->KeyUp(VK_SPACE))
+    {
+        bell->Find("bell")->visible = false;
+    }
 
     if (Option == true)
     {
@@ -333,7 +346,8 @@ void MainUI::Update()
             player->BoosterScalar = 1.0f;
         }
     }
-  
+    
+    
 
     //UI
     open->Update();
@@ -347,6 +361,7 @@ void MainUI::Update()
     bullet3->Update();
     bullet4->Update();
     bullet5->Update();
+    bell->Update();
     gauge->Update();
     gaugefront->Update();
     gaugeback->Update();
@@ -376,8 +391,6 @@ void MainUI::LateUpdate()
 {
     Ray CamForward;
     CamForward = Util::MouseToRay(INPUT->position, Camera::main);
-
-
 
     Vector3 hit;
     if (player->Find("Body")->Intersect(CamForward, hit))
@@ -436,7 +449,11 @@ void MainUI::LateUpdate()
         }
 
     }
-   
+    
+    if (player->GetWorldPos().y < 0)
+    {
+        App.deltaScale = 0.0f;
+    }
 }
 
 void MainUI::Render()
@@ -463,9 +480,29 @@ void MainUI::Render()
     bullet3->Render();
     bullet4->Render();
     bullet5->Render();
+    bell->Render();
     gaugeback->Render();
     gauge->Render();
     gaugefront->Render();
+
+    ////DWRITE->GetDC()->BeginDraw();
+    //DWRITE->RenderText(L"\n                                                                                               M",
+    //    RECT{ 0,0,1900,1900 }, 30.0f,
+    //    L"¹è´ÞÀÇ¹ÎÁ· ÁÖ¾Æ", Color(0, 0, 0, 1), DWRITE_FONT_WEIGHT_ULTRA_BLACK,
+    //    DWRITE_FONT_STYLE_ITALIC, DWRITE_FONT_STRETCH_ULTRA_EXPANDED);
+    ////DWRITE->GetDC()->EndDraw();
+
+    //wstring times = to_wstring((int)time / 60) + L" : " + to_wstring((int)time % 60);
+    int X = 0.5 * App.GetWidth();
+    Long4 rt = { X - 200, (long)(0.04 * App.GetHeight()), X + 200, (long)(0.04 * App.GetHeight() + 200) };
+    wstring pos = to_wstring(player->GetWorldPos().z) + L"°Å¸®";
+    //Long4 rt = { a[0], a[1], a[2], a[3] };
+
+    if (open->Find("TTM")->visible == false)
+    {
+        DWRITE->RenderText(pos, RECT{ rt.a, rt.b, rt.c, rt.d }, 50.0f, L"NeoµÕ±Ù");
+    }
+
     stop->Render();
     option->Render();
     continueUI->Render();
@@ -474,7 +511,6 @@ void MainUI::Render()
     botton->Render();
     mouse->Render();
    
-
 }
 
 void MainUI::Hierarchy()
@@ -495,6 +531,7 @@ void MainUI::Hierarchy()
     option->RenderHierarchy();
     continueUI->RenderHierarchy();
     retry->RenderHierarchy();
+    bell->RenderHierarchy();
     gauge->RenderHierarchy();
     gaugefront->RenderHierarchy();
     gaugeback->RenderHierarchy();
@@ -511,4 +548,5 @@ void MainUI::Hierarchy()
     sky->RenderHierarchy();
     sky2->RenderHierarchy();
     sky3->RenderHierarchy();
+    
 }
