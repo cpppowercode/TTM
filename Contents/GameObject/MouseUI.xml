@@ -1,0 +1,24 @@
+<Root Name="MouseUI" Visible="false" ObType="4">
+    <Mesh File="Circle.mesh"/>
+    <Shader File="1.UI.hlsl"/>
+    <Texture File="gaugeback.png"/>
+    <Transform>
+        <Position X="0.18000001" Y="0.47999999" Z="0"/>
+        <Scale X="0.029999999" Y="0.1" Z="1"/>
+        <Rotation X="0" Y="0" Z="0"/>
+    </Transform>
+    <UI PivotX="0.5" PivotY="0"/>
+    <Children Size="1"/>
+    <Child0 Name="Mouse" Visible="true" ObType="4">
+        <Mesh File="6.UI.mesh"/>
+        <Shader File="6.UI.hlsl"/>
+        <Texture File="mouse.png"/>
+        <Transform>
+            <Position X="-26.627941" Y="-7.5251732" Z="0"/>
+            <Scale X="1.5" Y="1" Z="1"/>
+            <Rotation X="0" Y="0" Z="0"/>
+        </Transform>
+        <UI PivotX="0" PivotY="0.5"/>
+        <Children Size="0"/>
+    </Child0>
+</Root>
