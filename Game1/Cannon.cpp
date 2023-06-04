@@ -29,7 +29,7 @@ Cannon::~Cannon()
 void Cannon::Update()
 {	
 	//대포 각도 조정
-	if (INPUT->KeyPress(VK_UP)&& Find("cannonJoint")->rotation.x>-1.5f)
+	if (INPUT->KeyPress(VK_UP)&& Find("cannonJoint")->rotation.x>-1.5f&&player->IsFire == false)
 	{
 		if (Find("cannonJoint"))
 		{
@@ -37,7 +37,7 @@ void Cannon::Update()
 		}
 
 	}
-	if (INPUT->KeyPress(VK_DOWN) && Find("cannonJoint")->rotation.x < 0)
+	if (INPUT->KeyPress(VK_DOWN) && Find("cannonJoint")->rotation.x < 0 && player->IsFire == false)
 	{
 		if (Find("cannonJoint"))
 		{
@@ -71,7 +71,8 @@ void Cannon::Release()
 
 void Cannon::cannonCharge()
 {
-
+	if (mainUI->botton->Find("playbotton")->visible == false && INPUT->KeyPress(VK_SPACE))
+	{
 		mainUI->gaugefront->Find("GaugeFront")->scale.y = Util::Saturate(mainUI->gaugefront->Find("GaugeFront")->scale.y, 0.0f, 0.77f);
 		if (mainUI->gaugefront->Find("GaugeFront")->scale.y == 0.77f)
 		{
@@ -90,28 +91,33 @@ void Cannon::cannonCharge()
 			mainUI->gaugefront->Find("GaugeFront")->scale.y += 7.0f * DELTA;
 		}
 		Gauge += (mainUI->gaugefront->Find("GaugeFront")->scale.y * 200.0f) * DELTA;
-	
+	}
 }
 
 void Cannon::cannonShot()
 {
-	mainUI->gaugefront->Find("GaugeFront")->visible = false;
-	mainUI->gauge->Find("Gauge")->visible = false;
-	mainUI->gaugeback->Find("GaugeBack")->visible = false;
-	player->visible = true;
+	if (mainUI->botton->Find("playbotton")->visible == false && INPUT->KeyUp(VK_SPACE))
+	{
+		mainUI->gaugefront->Find("GaugeFront")->visible = false;
+		mainUI->gauge->Find("Gauge")->visible = false;
+		mainUI->gaugeback->Find("GaugeBack")->visible = false;
+		player->visible = true;
 
-	player->scalar = Gauge;
-	player->seta = Direction;
-	player->SetVelocity();
-	player->IsFire = true;
-	player->gravity = 10.0f;
-	Camera::main = (Camera*)player->Find("BackCam");
+		player->scalar = Gauge;
+		player->seta = Direction;
+		player->SetVelocity();
+		player->IsFire = true;
+		player->gravity = 10.0f;
+		Camera::main = (Camera*)player->Find("BackCam");
+	}
 }
 
 void Cannon::dissipation()
 {
-	
-	player->visible = false;
-	player->SetPlayerWorldPos(Find("cannonJoint")->GetWorldPos());
-	player->SetPlayerRotationX(-(Find("cannonJoint")->rotation.x + (90 * TORADIAN)));
+	if (player->IsFire == false)
+	{
+		player->visible = false;
+		player->SetPlayerWorldPos(Find("cannonJoint")->GetWorldPos());
+		player->SetPlayerRotationX(-(Find("cannonJoint")->rotation.x + (90 * TORADIAN)));
+	}
 }

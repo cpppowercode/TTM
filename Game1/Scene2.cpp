@@ -83,22 +83,15 @@ void Scene2::Update()
     // 플레이어 날리기 실험용 추가본
 
     // 캐논 게이지 추가
-    if (mainUI->botton->Find("playbotton")->visible == false && INPUT->KeyPress(VK_SPACE))
-    {
         cannon->cannonCharge();
-    }
-
+    
     // 캐논 발사되는 순간
-    if (mainUI->botton->Find("playbotton")->visible == false && INPUT->KeyUp(VK_SPACE))
-    {
+    
         cannon->cannonShot();
-    }
-
+    
     // 캐논 발사 전 위치 및 회전각도 조정
-    if (player->IsFire == false)
-    {
-        cannon->dissipation();
-    }
+   
+        cannon->dissipation(); 
 
     ImGui::End();
    
