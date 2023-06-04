@@ -15,6 +15,7 @@ Player* Player::Create(string name)
 	player->Ani[0]->LoadFile("TTMtest.xml");
 	player->Ani[0]->Update();
 
+
 	player->Ani[1] = Actor::Create();
 	player->Ani[1]->LoadFile("TTMAni1.xml");
 	player->Ani[1]->Update();
@@ -53,9 +54,8 @@ void Player::Release()
 void Player::SetVelocity()
 {
 	//Vector3 Direction = Vector3(cannon->Direction.x * scalar, cannon->Direction.y * scalar , cannon->Direction.z *scalar);
-	velocity = ((cannon->Direction + (ChangeVel)) * scalar) - (UP * gravity);
-	velocity.Normalize(velocityNormalize);
-	velocityScalar = velocity.Length();
+	(seta + ChangeVel).Normalize(velocityDir);
+	velocity = (velocityDir * scalar) - (UP * gravity);
 }
 
 void Player::MovePlayer()
@@ -198,12 +198,7 @@ void Player::Update()
 		MovePlayer();
 		SetVelocity();
 		Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN));
-		for (int i = 0; i < 4; i++)
-		{
-			Ani[i]->Find("HoleBone")->rotation.x = Find("HoleBone")->rotation.x;
-		}
-
-
+		
 		if (INPUT->KeyPress(VK_RIGHT))
 		{
 			ChangeVel = GetRight() * PI * 0.25f;
@@ -232,6 +227,12 @@ void Player::Update()
 		{
 			ChangeVel = Vector3(0.0f, 0.0f, 0.0f) * PI * 0.25f;
 			IsChange = false;
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			Ani[i]->Find("HoleBone")->rotation.x = Find("HoleBone")->rotation.x;
+			Ani[i]->Find("HoleBone")->rotation.z = Find("HoleBone")->rotation.z;
 		}
 
 		if (!IsChange)

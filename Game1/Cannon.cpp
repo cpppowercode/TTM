@@ -101,6 +101,7 @@ void Cannon::cannonShot()
 	player->visible = true;
 
 	player->scalar = Gauge;
+	player->seta = Direction;
 	player->SetVelocity();
 	player->IsFire = true;
 	player->gravity = 10.0f;

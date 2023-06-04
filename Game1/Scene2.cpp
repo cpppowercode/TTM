@@ -22,9 +22,6 @@ void Scene2::Init()
     Cam->viewport.height = App.GetHeight();
     
     player = Player::Create();
-    
-    player->LoadFile("Player.xml");
-    player->Update();
 
     mainUI = MainUI::Create();
     mainUI->player = player;
@@ -32,7 +29,6 @@ void Scene2::Init()
     
     cannon = Cannon::Create();
     cannon->player = player;
-    player->cannon = cannon;
     cannon->mainUI = mainUI;
 
     airplanes = ObjectPool::AirplaneCreate();
@@ -101,7 +97,6 @@ void Scene2::Update()
     {
         cannon->dissipation();
     }
-
 
     ImGui::End();
    
