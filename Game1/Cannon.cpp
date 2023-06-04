@@ -45,7 +45,7 @@ void Cannon::Update()
 		}
 	}
 
-	cout << Find("cannonJoint")->rotation.x << endl;
+	//cout << Find("cannonJoint")->rotation.x << endl;
 
 	if (player->IsFire == false)
 	{

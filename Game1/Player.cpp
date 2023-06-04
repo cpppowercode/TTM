@@ -302,8 +302,15 @@ void Player::Update()
 		}
 	}
 
+<<<<<<< HEAD
+	//cout << "gravity : " << gravity << endl;
+=======
 	cout << "gravity : " << gravity << endl;
 	cout << "ChangeWS : " << ChangeWS << endl;
+<<<<<<< Updated upstream
+=======
+>>>>>>> 3f42c719ce80ac297fec56e7e7ad3b956a6a0122
+>>>>>>> Stashed changes
 	Actor::Update();
 }
 

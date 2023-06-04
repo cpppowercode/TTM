@@ -125,7 +125,7 @@ void MainUI::Update()
         botton->Find("playbotton")->scale.x = 1.1f;
         botton->Find("playbotton")->scale.y = 1.0f;
     }
-   // cout << player->BoosterScalar << endl;
+    //cout << player->BoosterScalar << endl;
     //UI 1번버튼 부스터
     if (booster->MouseOver())
     {
@@ -148,7 +148,7 @@ void MainUI::Update()
             booster->Find("boosterOFF")->visible = true;
         }
     }
-    //cout << player->scalar << endl;
+    cout << player->scalar << endl;
     //UI 2번버튼 폭탄
     if (bomb->MouseOver())
     {
@@ -350,7 +350,7 @@ void MainUI::LateUpdate()
     {
         player->scalar -= 1.0f * DELTA;
 
-        if (TIMER->GetTick(time2, 0.5f))
+        if (TIMER->GetTick(time2, 1.0f))
         {
             plane->SetWorldPosZ(player->GetWorldPos().z);
             plane2->SetWorldPosZ(player->GetWorldPos().z + 100.0f);
