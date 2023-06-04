@@ -59,7 +59,8 @@ void Airplane::LateUpdate()
 {
 	if (Intersect(player->Find("Body")))
 	{
-		player->rotation.x = -player->rotation.x;
+		player->seta.y = -player->seta.y;
+		player->gravity = 0;
 		player->ChangeAni();
 	}
 }
