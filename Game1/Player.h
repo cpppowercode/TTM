@@ -36,8 +36,9 @@ public:
     float rt = 0.0f;
 
     // 상하키 눌렀을때 변하는 방향값
+    bool  PressWS;
     float ChangeWS;
-
+    float rt_x = 0.0f;
 
 public:
     void	Update() override;

@@ -197,21 +197,51 @@ void Player::Update()
 	{
 		MovePlayer();
 		SetVelocity();
-		Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN) + ChangeWS);
-		
-		if (INPUT->KeyPress(VK_UP))
+		if (!PressWS)
 		{
-			if (ChangeWS < PI * 0.25f)
+			Find("HoleBone")->rotation.x = (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN) + ChangeWS);
+			
+			if (INPUT->KeyPress(VK_UP))
 			{
-				ChangeWS += PI * 0.25f * DELTA;
+				if (ChangeWS < PI * 0.25f && Find("HoleBone")->rotation.x < PI)
+				{
+					ChangeWS += PI * 0.25f * DELTA;
+				}
+			}
+
+			if (INPUT->KeyPress(VK_DOWN))
+			{
+				if (ChangeWS > -PI * 0.25f && Find("HoleBone")->rotation.x < PI)
+				{
+					ChangeWS -= PI * 0.25f * DELTA;
+				}
+				
+			}
+
+			if (INPUT->KeyUp(VK_UP) || INPUT->KeyUp(VK_DOWN))
+			{
+				rt_x = 0.0f;
+				PressWS = true;
 			}
 		}
 
-		if (INPUT->KeyPress(VK_DOWN))
+		if (PressWS)
 		{
-			if (ChangeWS > -PI * 0.25f)
+			ChangeWS = 0.0f;
+			
+			if (Find("HoleBone")->rotation.x != (atan2f(velocity.y, velocity.z) + (-90 * TORADIAN)))
 			{
-				ChangeWS -= PI * 0.25f * DELTA;
+				if (rt_x < 0.1f)
+				{
+					Find("HoleBone")->rotation.x = Util::Lerp(Find("HoleBone")->rotation.x, atan2f(velocity.y, velocity.z) + (-90 * TORADIAN), rt_x);
+
+					rt_x += DELTA;
+					if (rt_x >= 0.1f)
+					{
+						rt_x = 0.1f;
+						PressWS = false;
+					}
+				}
 			}
 		}
 
@@ -273,6 +303,7 @@ void Player::Update()
 	}
 
 	cout << "gravity : " << gravity << endl;
+	cout << "ChangeWS : " << ChangeWS << endl;
 	Actor::Update();
 }
 
