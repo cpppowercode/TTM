@@ -71,15 +71,47 @@ MainUI* MainUI::Create(string name)
 
     mainui->plane = Actor::Create();
     mainui->plane->LoadFile("plane.xml");
-
     mainui->plane2 = Actor::Create();
-    mainui->plane2->LoadFile("plane2.xml");
+    mainui->plane2->LoadFile("plane.xml");
+    mainui->plane3 = Actor::Create();
+    mainui->plane3->LoadFile("plane.xml");
+    mainui->plane4 = Actor::Create();
+    mainui->plane4->LoadFile("plane.xml");
+    mainui->plane5 = Actor::Create();
+    mainui->plane5->LoadFile("plane.xml");
+    mainui->plane6 = Actor::Create();
+    mainui->plane6->LoadFile("plane.xml");
+    mainui->plane7 = Actor::Create();
+    mainui->plane7->LoadFile("plane.xml");
+    mainui->plane8 = Actor::Create();
+    mainui->plane8->LoadFile("plane.xml");
+    mainui->plane9 = Actor::Create();
+    mainui->plane9->LoadFile("plane.xml");
+
+    mainui->plane2->SetLocalPos(Vector3(-2000.0f,0.0f, 2000.0f));
+    mainui->plane3->SetLocalPos(Vector3(0.0f,0.0f, 2000.0f));
+    mainui->plane4->SetLocalPos(Vector3(2000.0f,0.0f, 2000.0f));
+    mainui->plane5->SetLocalPos(Vector3(-2000.0f,0.0f,0.0f));
+    mainui->plane6->SetLocalPos(Vector3(2000.0f,0.0f,0.0f));
+    mainui->plane7->SetLocalPos(Vector3(-2000.0f,0.0f, -2000.0f));
+    mainui->plane8->SetLocalPos(Vector3(0.0f,0.0f, -2000.0f));
+    mainui->plane9->SetLocalPos(Vector3(2000.0f,0.0f, -2000.0f));
+
+    mainui->sky = Actor::Create();
+    mainui->sky->LoadFile("Sky.xml");
+    mainui->sky2 = Actor::Create();
+    mainui->sky2->LoadFile("Sky2.xml");
+    mainui->sky3 = Actor::Create();
+    mainui->sky3->LoadFile("Sky3.xml");
 
     mainui->Option = false;
     mainui->Booster = false;
     mainui->time = 0.0f;
     mainui->time2 = 0.0f;
     mainui->count = 6;
+
+    Camera::main->farZ = 1000.0f;
+   
 
 	return mainui;
 }
@@ -301,8 +333,7 @@ void MainUI::Update()
             player->BoosterScalar = 1.0f;
         }
     }
-    
-
+  
 
     //UI
     open->Update();
@@ -326,6 +357,17 @@ void MainUI::Update()
     mouse->Update();
     plane->Update();
     plane2->Update();
+    plane3->Update();
+    plane4->Update();
+    plane5->Update();
+    plane6->Update();
+    plane7->Update();
+    plane8->Update();
+    plane9->Update();
+    sky->Update();
+    sky2->Update();
+    sky3->Update();
+
 
 	Actor::Update();
 }
@@ -342,19 +384,57 @@ void MainUI::LateUpdate()
     {
         if (count > 1 && player->IsFire == true && INPUT->KeyDown(VK_LBUTTON))
         {
+            player->ChangeAni();
             count--;
-            player->scalar += 50.0f;
+
+            player->scalar += 40.0f;
         }
     }
     if (player->IsFire == true)
     {
-        player->scalar -= 1.0f * DELTA;
+        player->scalar = Util::Saturate(player->scalar, 0.0f, 550.0f);
+        player->scalar -= 5.0f * DELTA;
 
-        if (TIMER->GetTick(time2, 1.0f))
+        sky->SetLocalPos(Vector3(0.0f, 220.0f, player->GetWorldPos().z + 700.0f));
+        sky2->SetLocalPos(Vector3(0.0f, 1720.0f, player->GetWorldPos().z + 700.0f));
+        sky3->SetLocalPos(Vector3(0.0f, 3720.0f, player->GetWorldPos().z + 700.0f));
+        if (player->GetWorldPos().z > plane->GetWorldPos().z + 1000)
         {
-            plane->SetWorldPosZ(player->GetWorldPos().z);
-            plane2->SetWorldPosZ(player->GetWorldPos().z + 100.0f);
+           plane->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().z));
+           plane2->SetLocalPos(Vector3(player->GetWorldPos().z + -2000.0f, 0.0f, player->GetWorldPos().z + 2000.0f));
+           plane3->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().z + 2000.0f));
+           plane4->SetLocalPos(Vector3(player->GetWorldPos().z + 2000.0f, 0.0f, player->GetWorldPos().z + 2000.0f));
+           plane5->SetLocalPos(Vector3(player->GetWorldPos().z + -2000.0f, 0.0f, 0.0f));
+           plane6->SetLocalPos(Vector3(player->GetWorldPos().z + 2000.0f, 0.0f, 0.0f));
+           plane7->SetLocalPos(Vector3(player->GetWorldPos().z  + -2000.0f, 0.0f, player->GetWorldPos().z  + -2000.0f));
+           plane8->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().z + -2000.0f));
+           plane9->SetLocalPos(Vector3(player->GetWorldPos().z + 2000.0f, 0.0f, player->GetWorldPos().z + -2000.0f));
         }
+        if (player->GetWorldPos().x > plane->GetWorldPos().x + 1000)
+        {
+            plane->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x));
+            plane2->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane3->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane4->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane5->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, 0.0f));
+            plane6->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, 0.0f));
+            plane7->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+            plane8->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+            plane9->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+        }
+        if (player->GetWorldPos().x > -plane->GetWorldPos().x + 1000)
+        {
+            plane->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x));
+            plane2->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane3->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane4->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, player->GetWorldPos().x + 2000.0f));
+            plane5->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, 0.0f));
+            plane6->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, 0.0f));
+            plane7->SetLocalPos(Vector3(player->GetWorldPos().x + -2000.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+            plane8->SetLocalPos(Vector3(0.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+            plane9->SetLocalPos(Vector3(player->GetWorldPos().x + 2000.0f, 0.0f, player->GetWorldPos().x + -2000.0f));
+        }
+
     }
    
 }
@@ -364,6 +444,16 @@ void MainUI::Render()
     //UI
     plane->Render();
     plane2->Render();
+    plane3->Render();
+    plane4->Render();
+    plane5->Render();
+    plane6->Render();
+    plane7->Render();
+    plane8->Render();
+    plane9->Render();
+    sky->Render();
+    sky2->Render();
+    sky3->Render();
     booster->Render();
     bomb->Render();
     reload->Render();
@@ -411,4 +501,14 @@ void MainUI::Hierarchy()
     mouse->RenderHierarchy();
     plane->RenderHierarchy();
     plane2->RenderHierarchy();
+    plane3->RenderHierarchy();
+    plane4->RenderHierarchy();
+    plane5->RenderHierarchy();
+    plane6->RenderHierarchy();
+    plane7->RenderHierarchy();
+    plane8->RenderHierarchy();
+    plane9->RenderHierarchy();
+    sky->RenderHierarchy();
+    sky2->RenderHierarchy();
+    sky3->RenderHierarchy();
 }

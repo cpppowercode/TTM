@@ -1,9 +1,9 @@
-<Root Name="Actor" Visible="true" ObType="1">
+<Root Name="Actor" Visible="false" ObType="1">
     <Mesh File="1.Point.mesh"/>
     <Shader File="1.Cube.hlsl"/>
     <Texture File="Bold.png"/>
     <Transform>
-        <Position X="0" Y="4" Z="0"/>
+        <Position X="0" Y="11.551699" Z="18.665087"/>
         <Scale X="1" Y="1" Z="1"/>
         <Rotation X="0" Y="0" Z="0"/>
     </Transform>
@@ -14,7 +14,7 @@
             <Scale X="1" Y="1" Z="1"/>
             <Rotation X="0" Y="0" Z="0"/>
         </Transform>
-        <Camera Ortho="false" Fov="1.047192" Width="1459" Height="866" NearZ="0.1" FarZ="500" viewportX="0" viewportY="0" viewportW="1459" viewportH="866"/>
+        <Camera Ortho="false" Fov="1.047192" Width="1459" Height="866" NearZ="0.1" FarZ="1000" viewportX="0" viewportY="0" viewportW="1459" viewportH="866"/>
         <Children Size="0"/>
     </Child0>
     <Child1 Name="HoleBone" Visible="true" ObType="1">
@@ -23,7 +23,7 @@
         <Transform>
             <Position X="0" Y="0" Z="0"/>
             <Scale X="1" Y="1" Z="1"/>
-            <Rotation X="0" Y="3.1415927" Z="0"/>
+            <Rotation X="-1.3827503" Y="3.1415927" Z="0"/>
         </Transform>
         <Children Size="3"/>
         <Child0 Name="BodyBone" Visible="true" ObType="1">

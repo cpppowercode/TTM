@@ -1,9 +1,9 @@
 <Root Name="Camera" Visible="true" ObType="2">
     <Transform>
-        <Position X="20.242485" Y="16.09647" Z="-17.701412"/>
+        <Position X="11.850506" Y="15.675761" Z="-17.806639"/>
         <Scale X="1" Y="1" Z="1"/>
-        <Rotation X="0.67299765" Y="-0.32302138" Z="0"/>
+        <Rotation X="0.22099732" Y="-0.32002133" Z="0"/>
     </Transform>
-    <Camera Ortho="false" Fov="1.047192" Width="1294" Height="841" NearZ="1" FarZ="500" viewportX="0" viewportY="0" viewportW="1294" viewportH="841"/>
+    <Camera Ortho="false" Fov="1.047192" Width="1459" Height="866" NearZ="1" FarZ="500" viewportX="0" viewportY="0" viewportW="1459" viewportH="866"/>
     <Children Size="0"/>
 </Root>

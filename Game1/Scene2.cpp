@@ -22,14 +22,16 @@ void Scene2::Init()
     Cam->viewport.height = App.GetHeight();
     
     player = Player::Create();
-
+   
     mainUI = MainUI::Create();
     mainUI->player = player;
     mainUI->cannon = cannon;
+    mainUI->Cam = Cam;
     
     cannon = Cannon::Create();
     cannon->player = player;
     cannon->mainUI = mainUI;
+
 
     airplanes = ObjectPool::AirplaneCreate();
     malphites = ObjectPool::MalphiteCreate();

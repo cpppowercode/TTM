@@ -2,11 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-<<<<<<< Updated upstream
       <FullPath>C:\Users\jsmj1\Documents\GitHub\TTM\Build\Game1.exe</FullPath>
-=======
-      <FullPath>C:\Users\c\Documents\GitHub\TTM\Build\Game1.exe</FullPath>
->>>>>>> Stashed changes
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

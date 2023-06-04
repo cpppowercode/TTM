@@ -8,6 +8,18 @@ public:
 
 	Actor* plane;
 	Actor* plane2;
+	Actor* plane3;
+	Actor* plane4;
+	Actor* plane5;
+	Actor* plane6;
+	Actor* plane7;
+	Actor* plane8;
+	Actor* plane9;
+	Camera* Cam;
+
+	Actor* sky;
+	Actor* sky2;
+	Actor* sky3;
 
 	int count;
 	float time;
