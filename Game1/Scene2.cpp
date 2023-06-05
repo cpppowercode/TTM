@@ -126,7 +126,7 @@ void Scene2::Render()
 {
     Camera::main->Set();
 
-    grid->Render();
+    //grid->Render();
     player->Render();
     
     for (Airplane* airplane : airplanes)

@@ -8,6 +8,8 @@ MainUI* MainUI::Create(string name)
 {
 	MainUI* mainui = new MainUI();
 
+    //showcursor false;
+
     ///UI 시작화면
     mainui->open = UI::Create();
     mainui->open->LoadFile("OpenUI.xml");
